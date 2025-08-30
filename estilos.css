@@ -1,0 +1,20 @@
+.navbar{   
+    display: flex;
+    width: 100vw;
+    justify-content: space-around;
+    
+}
+
+ul{
+    display: flex;
+}
+
+li{
+    list-style: none;
+    padding: 30px;
+}
+
+img{
+    height: 120px;
+    border-radius: 50%;
+}
