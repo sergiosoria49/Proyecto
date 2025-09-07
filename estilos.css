@@ -1,7 +1,11 @@
 /* Google font */
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
 
-/* Estilo de base */
+/* Normalizacion */
+*{
+    padding: 0;
+    margin: 0;
+}
 
 li{
     list-style: none;
@@ -15,6 +19,7 @@ a{
 /* Variables */
 :root{
     --color-principal: #0482A3;
+    --color-secundario:#041920;
 }
 
 /* Barra de naveagacion */
@@ -22,20 +27,21 @@ a{
 .navbar{   
     display: flex;
     position: relative;
-    margin: 0 auto;
+    background-color: white;
+    margin: 20px auto;
     max-width: 60vw;
-    height: 100px;
+    min-height: 100px;
     justify-content: space-between;
-    border: 1px solid ;
+    border: 1px solid var(--color-secundario);
     border-radius: 100px;
 }
 
 
 .navbar__logo{
     position: absolute;
-    top: 5px;
+    top: 50%;
     left: 50%;
-    transform: translate(-50%);
+    transform: translate(-50%, -50%);
     height: 90px;
     width: 90px;
     background-image: url(./multimedia/Captura\ de\ pantalla\ 2025-08-30\ 115723.png);
@@ -87,3 +93,39 @@ a{
     opacity: 0.8;
 }
 
+/* Contenido principal  */
+
+
+.hero{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: end;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -100;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 0% 30%;
+     background-image: url(./multimedia/Imagen\ de\ WhatsApp\ 2025-09-06\ a\ las\ 22.49.14_d96c4d9f.jpg);
+}
+
+.hero__content{
+    width: 30%;
+}
+
+.hero__text{
+    color: white;
+    font-size: 1.6rem;
+}
+
+.hero__title{
+    color: white;
+    font-size: 2rem;
+    text-transform: uppercase;
+    padding-bottom:  20px;
+}
