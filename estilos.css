@@ -5,35 +5,41 @@
 *{
     padding: 0;
     margin: 0;
+    font-family: var(--fuente-principal);
+    
 }
+
+
 
 li{
     list-style: none;
 }
 
 a{
+    display: inline-block;
     text-decoration: none;
     color: black;
 }
+
 
 /* Variables */
 :root{
     --color-principal: #0482A3;
     --color-secundario:#041920;
+    --fuente-principal: Oswald,sans-serif;
 }
 
 /* Barra de naveagacion */
 
 .navbar{   
+    box-sizing: border-box;
     display: flex;
     position: relative;
     background-color: white;
-    margin: 20px auto;
-    max-width: 60vw;
-    min-height: 100px;
+    margin: 0px auto;
+    width: 1200px;
+    height: 100px;
     justify-content: space-between;
-    border: 1px solid var(--color-secundario);
-    border-radius: 100px;
 }
 
 
@@ -42,14 +48,14 @@ a{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    height: 90px;
-    width: 90px;
+    height: 80px;
+    width: 80px;
     background-image: url(./multimedia/Captura\ de\ pantalla\ 2025-08-30\ 115723.png);
     background-size: cover;
     border-radius: 50%;
 }
 
-.navbar__nav{
+.navbar__nav, .navbar__nav__login{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -57,9 +63,8 @@ a{
 }
 
 .nav__item{
-    font-size: 18px;
-    padding: 20px;
-    font-family: "Oswald", sans-serif;
+    font-size: 16px;
+    padding: 15px;
     font-weight: 400;
 }
 
@@ -69,8 +74,10 @@ a{
 }
 
 .nav__link:hover{
+    transition: all 0.2s ;
     background-color: var(--color-principal);
     color: white;
+    transform: scale(1.05);
 }
 
 .nav__link__signup{
@@ -86,11 +93,31 @@ a{
 
 .nav__link__login:hover {
     background-color: var(--color-principal);
-    opacity: 0.8;
 }
 
-.nav__link__signup:hover{
+
+
+.nav__link__signup:hover, .nav__link__login:hover{
     opacity: 0.8;
+    transition: all 0.2s ;
+    transform: scale(1.05);
+}
+
+/* Menu hamburguesa */
+
+.hamburger {
+    display: none;
+   margin-left: 40px;
+  flex-direction: column;
+  justify-content: center;
+  cursor: pointer;
+  gap: 5px;
+}
+
+.hamburger span {
+  width: 40px;
+  height: 7px;
+  background-color: var(--color-principal);
 }
 
 /* Contenido principal  */
@@ -98,34 +125,141 @@ a{
 
 .hero{
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: end;
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    width: 100%;
-    height: 100%;
+    justify-content: end;
+    align-items: center;
     overflow: hidden;
-    z-index: -100;
+    height: calc(100vh - 100px);
+    background-image: url(./multimedia/Imagen\ de\ WhatsApp\ 2025-09-06\ a\ las\ 22.49.14_d96c4d9f.jpg);
     background-size: cover;
-    background-repeat: no-repeat;
     background-position: 0% 30%;
-     background-image: url(./multimedia/Imagen\ de\ WhatsApp\ 2025-09-06\ a\ las\ 22.49.14_d96c4d9f.jpg);
+    background-attachment: fixed;
 }
 
+/* .hero__background{
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: -100;
+    background-repeat: no-repeat; 
+} */
+
+
 .hero__content{
-    width: 30%;
+    padding-right: 25px ;
+    width: 40%;
+    color: white;
+    text-shadow: 3px 3px 3px black;
+    text-align: end;
 }
 
 .hero__text{
-    color: white;
-    font-size: 1.6rem;
+    font-size: clamp(1.2rem, 1vw + 0.7rem, 2rem);
 }
 
 .hero__title{
-    color: white;
-    font-size: 2rem;
-    text-transform: uppercase;
+    font-size: clamp(2.2rem, 2vw + 1.5rem, 5rem);
+    font-weight: 700;
     padding-bottom:  20px;
 }
+
+.fixed__wpp{
+    position: absolute;
+    bottom: 25px;
+    right: 25px;
+    background-image:url(https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg);
+    width: 100px;
+    height: 100px;
+
+}
+
+/* Servicios */
+
+ .services{
+    /* position: absolute; */
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    z-index: -100;
+    background-size: cover;
+    background-repeat: no-repeat; 
+    background-position: 0% 30%;
+    background-attachment: fixed;
+    background-image: url(./multimedia/Imagen\ de\ WhatsApp\ 2025-09-06\ a\ las\ 22.47.50_998ad817.jpg);
+} 
+
+.services__content{
+    display: flex;
+    top: 50px;
+    height: 100vh;
+    justify-content: center;
+}
+
+.services__item{
+    width: 200px;
+}
+
+@media (max-width:1200px){
+     .navbar{
+            width: 100%;
+            border-radius: 0px;
+            border: 0px;
+            box-sizing: border-box;
+            margin: 0;
+        }
+
+    .hamburger{
+        display: flex ;
+
+    }
+
+    .navbar__nav{
+        position: absolute;
+        flex-direction: column;
+        top: 101px;
+        width: 150px;
+        transform: translateX(-100%);
+        transition: all 0.3s ease-in-out;
+        background-color: white;
+    }
+    
+     .navbar__nav__login{
+        position: absolute;
+        flex-direction: column;
+        top: 470px;
+        width: 150px;
+        transform: translateX(-100%);
+        transition: all 0.3s ease-in-out;
+        background-color: white;
+    }
+
+    .navbar__nav.active {
+        transform: translateX(0);
+  }
+    }
+
+     .navbar__nav__login.active {
+        display: flex; 
+        transform: translateX(0);
+    }
+  
+ @media (max-width:600px){
+        .navbar{
+            width: 100%;
+            border-radius: 0px;
+            border: 0px;
+            box-sizing: border-box;
+        }
+
+        .hamburger span{
+            width: 30px;
+            height: 4px;
+        }
+
+        .navbar__logo{
+            width: 60px;
+            height: 60px;
+        }
+        
+    }
+    
