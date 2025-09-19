@@ -176,10 +176,14 @@ a{
 /* Servicios */
 
  .services{
-    /* position: absolute; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     width: 100vw;
     height: 100vh;
-    overflow: hidden;
+    /* overflow-y: auto; */
+    font-family: var(--fuente-principal);
+    color: white;
     z-index: -100;
     background-size: cover;
     background-repeat: no-repeat; 
@@ -190,16 +194,51 @@ a{
 
 .services__content{
     display: flex;
-    top: 50px;
-    height: 100vh;
-    justify-content: center;
+    height: 600px;
+}
+
+.services__title{
+    font-size: 2rem;
+    margin: 100px;
 }
 
 .services__item{
-    width: 200px;
+    width: 300px;
+    margin: 0 80px;
 }
 
+.services__item:hover{
+    padding: 20px;
+    background-color: grey;
+    border: 1px solid black;
+
+    transform: scale(1.2);
+    transition: all 0.2s ease-in;
+
+}
+
+.services__item:hover .show-on-hover{
+    display: inline-block;
+}
+
+.services__item__title{
+    font-size: 1.5rem;
+    text-align: center;
+    padding-bottom: 10px;
+}
+
+.services__item__img{
+    width: 100%;
+}
+
+.services__item__text, .services__item__btn{
+    display: none; 
+}
+
+
+
 @media (max-width:1200px){
+    /* navbar */
      .navbar{
             width: 100%;
             border-radius: 0px;
@@ -207,7 +246,7 @@ a{
             box-sizing: border-box;
             margin: 0;
         }
-
+    
     .hamburger{
         display: flex ;
 
@@ -235,15 +274,42 @@ a{
 
     .navbar__nav.active {
         transform: translateX(0);
-  }
     }
 
-     .navbar__nav__login.active {
+    .navbar__nav__login.active {
         display: flex; 
         transform: translateX(0);
     }
+
+    /* Servicios */
+
+    
+    .services__title{
+        font-size: 1.5rem;
+    }
+
+       
+
+    .services__item{
+    width: 200px;
+    margin: 40px;
+    }
+
+    .services__item:hover{
+        padding: 10px;
+        background-color: grey;
+        border: 1px solid black;
+
+        transform: scale(1.2);
+        transition: all 0.2s ease-in;
+
+    }
+    }
+
+     
   
- @media (max-width:600px){
+ 
+    @media (max-width:600px){
         .navbar{
             width: 100%;
             border-radius: 0px;
@@ -261,5 +327,27 @@ a{
             height: 60px;
         }
         
+
+        
+
+        /* Servicios */
+        .services__content{
+        flex-direction: column;
+        overflow-y: auto;
+        justify-content: flex-start;
+        scroll-snap-type: y mandatory; 
+        -webkit-overflow-scrolling: touch; 
+        
+        }
+
+        .services__item{
+            scroll-snap-align:start;
+        }
+        
     }
-    
+
+@media (orientation: landscape){
+     .services__content{
+        flex-direction: row;
+    }
+}
