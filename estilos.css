@@ -181,7 +181,6 @@ a{
     align-items: center;
     width: 100vw;
     height: 100vh;
-    /* overflow-y: auto; */
     font-family: var(--fuente-principal);
     color: white;
     z-index: -100;
@@ -291,7 +290,7 @@ a{
        
 
     .services__item{
-    width: 200px;
+    width: 250px;
     margin: 40px;
     }
 
@@ -304,6 +303,41 @@ a{
         transition: all 0.2s ease-in;
 
     }
+
+    .services__item__img{
+        height: 350px;
+    }
+
+     .services__item__containerImg{
+        position: relative;
+        height: 350px;
+    }
+        
+        .services__item:hover  .services__item__text{
+        position: absolute;
+        top: 50px;
+        left: 10px;
+        margin: 15px;
+    }
+
+     .services__item:hover  .services__item__btn{
+        position: absolute;
+        top: 200px;
+        left: 10px;
+        margin: 15px;
+    }
+    
+    .services__item:hover .services__item__overlay{
+        position: absolute;
+        top: 0;
+        background-color: #041920;
+        opacity: 0.5;
+        height: 100%;
+        width: 100%;
+        
+    }
+
+
     }
 
      
@@ -343,11 +377,77 @@ a{
         .services__item{
             scroll-snap-align:start;
         }
+
         
     }
 
-@media (orientation: landscape){
-     .services__content{
-        flex-direction: row;
+@media (max-width: 1100px) and (orientation: landscape)  {
+    
+
+    /* servicios */
+
+    /* .services{
+        height: auto;
+    } */
+    .services__item{
+        position: relative;
+        width: 140px;
+        height: auto;
     }
+
+    .services__title{
+        font-size: 1.5rem;
+        margin: 20px;
+    }
+
+    .services__item__title{
+        font-size: 1.2rem;
+    }
+
+    .services__content{
+        height: 330px;
+    }
+
+    .services__item__text{
+        box-sizing: border-box;
+    }
+    .services__item:hover{
+        height: 250px;
+        transform: scale(1);
+
+    }
+
+    .services__item:hover  .services__item__text{
+        position: absolute;
+        top: 50px;
+        left: 10px;
+        margin: 15px;
+    }
+
+     .services__item:hover  .services__item__btn{
+        position: absolute;
+        top: 200px;
+        left: 10px;
+        margin: 15px;
+    }
+    
+    .services__item:hover .services__item__overlay{
+        position: absolute;
+        top: 0;
+        background-color: #041920;
+        opacity: 0.5;
+        height: 100%;
+        width: 100%;
+        
+    }
+
+    .services__item__img{
+        height: 200px;
+    }
+
+    .services__item__containerImg{
+        position: relative;
+        height: 200px;
+    }
+
 }
