@@ -27,6 +27,7 @@ a{
     --color-principal: #0482A3;
     --color-secundario:#041920;
     --fuente-principal: Oswald,sans-serif;
+    --overlay:rgba(0,0,0,0.3) ;
 }
 
 /* Barra de naveagacion */
@@ -35,6 +36,7 @@ a{
     box-sizing: border-box;
     display: flex;
     position: relative;
+    z-index: 1;
     background-color: white;
     margin: 0px auto;
     width: 1200px;
@@ -103,7 +105,7 @@ a{
     transform: scale(1.05);
 }
 
-/* Menu hamburguesa */
+/* Menu hamburguesa - computadora 1080 p*/
 
 .hamburger {
     display: none;
@@ -120,32 +122,37 @@ a{
   background-color: var(--color-principal);
 }
 
-/* Contenido principal  */
+/* Contenido principal / computadora  */
 
 
 .hero{
+    position: relative;
+    z-index: 1;
     display: flex;
     justify-content: end;
     align-items: center;
     overflow: hidden;
     height: calc(100vh - 100px);
-    background-image: url(./multimedia/Imagen\ de\ WhatsApp\ 2025-09-06\ a\ las\ 22.49.14_d96c4d9f.jpg);
+    background-image: url(./multimedia/a-vibrant-photograph-of-a-young-woman-se_qXM0OBImTbSBuJY4S3-P1Q_aVLLxIhJSNq-jxchRUhsEw.jpeg);
     background-size: cover;
-    background-position: 0% 30%;
+    background-position: 30% 20%;
     background-attachment: fixed;
 }
 
-/* .hero__background{
-    top: 0;
+.hero__background{
+    position: absolute;
+    top: 0px;
     left: 0;
-    height: 100%;
     width: 100%;
-    z-index: -100;
-    background-repeat: no-repeat; 
-} */
+    height: 100%;
+    height: calc(100vh - 100px);
+    background-color: var(--overlay);
+    z-index: 1;
+}
 
 
 .hero__content{
+    z-index: 1;
     padding-right: 25px ;
     width: 40%;
     color: white;
@@ -165,6 +172,7 @@ a{
 
 .fixed__wpp{
     position: absolute;
+    z-index: 1;
     bottom: 25px;
     right: 25px;
     background-image:url(https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg);
@@ -172,28 +180,69 @@ a{
     height: 100px;
 
 }
+ /* Sobre mi - computadora 1080 p*/
 
-/* Servicios */
+    .about-me{
+        position: relative;
+        z-index: 1;
+        display: flex;
+        align-items: center;
+        width: 100%;
+        height: 100vh;
+        background-image: url(./multimedia/aboutme.webp);
+        background-size: cover;
+        background-position: 30% 20%;
+        background-attachment: fixed;
+    }
+
+    .about-me__overlay{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: var(--overlay);
+    }
+    
+    .about-me__carousel{
+        position: relative;
+        left: 100px;
+        width: 600px;
+        height: 600px;
+        overflow: hidden;
+    }
+/* Servicios / computadora*/
 
  .services{
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100vw;
+    width: 100%;
     height: 100vh;
     font-family: var(--fuente-principal);
     color: white;
-    z-index: -100;
+    z-index: 10001;
     background-size: cover;
     background-repeat: no-repeat; 
     background-position: 0% 30%;
     background-attachment: fixed;
-    background-image: url(./multimedia/Imagen\ de\ WhatsApp\ 2025-09-06\ a\ las\ 22.47.50_998ad817.jpg);
+    background-image: url(./multimedia/fondos.jpg);
 } 
+
+.services__background{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(5, 5, 5,0.3);
+    z-index: -1;
+}
 
 .services__content{
     display: flex;
-    height: 600px;
+    height: 500px;
 }
 
 .services__title{
@@ -202,19 +251,25 @@ a{
 }
 
 .services__item{
+    position: relative;
+    z-index: 20;
     width: 300px;
-    margin: 0 80px;
+    margin: 0 50px;
+    height: 450px;
+    padding: 20px;
+    background-color:  rgba(4, 130, 163, 0.7);
 }
+
+
 
 .services__item:hover{
-    padding: 20px;
-    background-color: grey;
     border: 1px solid black;
-
+    border-radius: 15px;
     transform: scale(1.2);
-    transition: all 0.2s ease-in;
-
+    transition: all 0.3s ease-in;
+    background-color:  rgba(4, 130, 163, 1);
 }
+
 
 .services__item:hover .show-on-hover{
     display: inline-block;
@@ -228,10 +283,48 @@ a{
 
 .services__item__img{
     width: 100%;
+    height: 400px;
 }
+
+
 
 .services__item__text, .services__item__btn{
     display: none; 
+}
+
+.services__item__containerImg{
+    position: relative;
+    height: 400px;
+    overflow: hidden;  
+    z-index: 2;      
+}
+
+.services__item:hover .services__item__containerImg{
+    transition: all 0.3s ease;
+}
+
+.services__item:hover  .services__item__text{
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 10px;
+}
+
+.services__item:hover  .services__item__btn{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    margin: 15px;
+}
+
+.services__item:hover .services__item__overlay{
+    position: absolute;
+    top: 0;
+    background-color: #041920;
+    opacity: 0.5;
+    height: 100%;
+    width: 100%;
+        
 }
 
 
@@ -280,6 +373,12 @@ a{
         transform: translateX(0);
     }
 
+    /* Sobre mi */
+
+    .about-me{
+
+    }
+
     /* Servicios */
 
     
@@ -291,41 +390,30 @@ a{
 
     .services__item{
     width: 250px;
-    margin: 40px;
+    margin: 20px;
+    height: 400px;
     }
 
     .services__item:hover{
-        padding: 10px;
-        background-color: grey;
-        border: 1px solid black;
-
-        transform: scale(1.2);
+        border: 1px solid var(--color-secundario);
+        transform: scale(1.05);
         transition: all 0.2s ease-in;
 
     }
 
     .services__item__img{
         height: 350px;
+        
     }
 
      .services__item__containerImg{
         position: relative;
         height: 350px;
+        
     }
         
-        .services__item:hover  .services__item__text{
-        position: absolute;
-        top: 50px;
-        left: 10px;
-        margin: 15px;
-    }
 
-     .services__item:hover  .services__item__btn{
-        position: absolute;
-        top: 200px;
-        left: 10px;
-        margin: 15px;
-    }
+     
     
     .services__item:hover .services__item__overlay{
         position: absolute;
@@ -334,7 +422,7 @@ a{
         opacity: 0.5;
         height: 100%;
         width: 100%;
-        
+        border-radius: 10px;
     }
 
 
@@ -375,6 +463,7 @@ a{
         }
 
         .services__item{
+            
             scroll-snap-align:start;
         }
 
@@ -391,8 +480,8 @@ a{
     } */
     .services__item{
         position: relative;
+        height: 250px;
         width: 140px;
-        height: auto;
     }
 
     .services__title{
@@ -412,23 +501,15 @@ a{
         box-sizing: border-box;
     }
     .services__item:hover{
-        height: 250px;
-        transform: scale(1);
+        transform: scale(1.1);
 
     }
 
-    .services__item:hover  .services__item__text{
-        position: absolute;
-        top: 50px;
-        left: 10px;
-        margin: 15px;
-    }
 
-     .services__item:hover  .services__item__btn{
-        position: absolute;
-        top: 200px;
-        left: 10px;
-        margin: 15px;
+   .services__item__containerImg{
+        position: relative;
+        height: 200px;
+
     }
     
     .services__item:hover .services__item__overlay{
@@ -445,9 +526,12 @@ a{
         height: 200px;
     }
 
-    .services__item__containerImg{
-        position: relative;
-        height: 200px;
-    }
+}
 
+@media(max-width:950px) and (orientation: landscape) {
+    .fixed__wpp{
+        left: 10px;
+        width: 50px;
+        height: 50px;
+    }
 }
