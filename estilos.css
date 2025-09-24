@@ -30,13 +30,13 @@ a{
     --overlay:rgba(0,0,0,0.3) ;
 }
 
-/* Barra de naveagacion */
+/* Barra de naveagacion - computadora 1080p */
 
 .navbar{   
     box-sizing: border-box;
     display: flex;
     position: relative;
-    z-index: 1;
+    z-index: 2;
     background-color: white;
     margin: 0px auto;
     width: 1200px;
@@ -122,7 +122,7 @@ a{
   background-color: var(--color-principal);
 }
 
-/* Contenido principal / computadora  */
+/* Contenido principal - computadora  */
 
 
 .hero{
@@ -186,17 +186,19 @@ a{
         position: relative;
         z-index: 1;
         display: flex;
-        align-items: center;
         width: 100%;
         height: 100vh;
         background-image: url(./multimedia/aboutme.webp);
         background-size: cover;
         background-position: 30% 20%;
         background-attachment: fixed;
+        color: white;
+        overflow: hidden;
     }
 
     .about-me__overlay{
         position: absolute;
+        z-index: -1;
         top: 0;
         left: 0;
         width: 100%;
@@ -204,13 +206,38 @@ a{
         background-color: var(--overlay);
     }
     
-    .about-me__carousel{
-        position: relative;
-        left: 100px;
-        width: 600px;
-        height: 600px;
-        overflow: hidden;
+    .about-me__carousel-wrapper{
+        display: flex;
+        transition: transform 0.5s ease;
     }
+
+    .about-me__carousel-slide{
+        position: relative;
+        top: 10%;
+        left: 10%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 700px;
+        height: 75vh;
+        padding: 10px;
+        border: 3px solid black;
+        /* flex-shrink: 0; */
+    }
+
+    .about-me__img{
+        width: 60%;
+    }
+
+    .about-me__title{
+        margin-bottom: 25px;
+        font-size: 3rem;
+    }
+
+    .about-me__text{
+        font-size: 1.5rem;
+    }
+
 /* Servicios / computadora*/
 
  .services{
@@ -222,7 +249,7 @@ a{
     height: 100vh;
     font-family: var(--fuente-principal);
     color: white;
-    z-index: 10001;
+    z-index: 2;
     background-size: cover;
     background-repeat: no-repeat; 
     background-position: 0% 30%;
@@ -431,7 +458,7 @@ a{
      
   
  
-    @media (max-width:600px){
+    @media (max-width:850px){
         .navbar{
             width: 100%;
             border-radius: 0px;
