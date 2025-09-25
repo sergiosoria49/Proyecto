@@ -134,7 +134,8 @@ a{
     justify-content: end;
     align-items: center;
     overflow: hidden;
-    height: calc((var(--vh,1vh) * 100) - 100px);
+    /* height: calc((var(--vh,1vh) * 100) - 100px); */
+    height: calc(100vh - 100px);
     background-image: url(./multimedia/a-vibrant-photograph-of-a-young-woman-se_qXM0OBImTbSBuJY4S3-P1Q_aVLLxIhJSNq-jxchRUhsEw.jpeg);
     background-size: cover;
     background-position: 50% 10%;
@@ -490,12 +491,11 @@ a{
 
         /* Servicios */
         .services__content{
-        flex-direction: column;
+        /* flex-direction: column; */
         overflow-y: auto;
-        justify-content: flex-start;
         scroll-snap-type: y mandatory; 
         -webkit-overflow-scrolling: touch; 
-        flex-wrap: nowrap;
+        flex-wrap: wrap;
         }
 
         .services__item{

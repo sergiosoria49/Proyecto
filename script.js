@@ -18,7 +18,6 @@ function setVH(){
   // window.innerHeight = alto visible real en pixeles
   let vh = window.innerHeight * 0.01;
   document.documentElement.style.setProperty('--vh', `${vh}px`)
-  console.log("Se ejercuto la funcion")
 }
 
 setVH();
