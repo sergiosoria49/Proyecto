@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Pagina principal</title>
     <link rel="stylesheet" href="estilos.css">
 </head>
 <body>
@@ -136,17 +136,44 @@
                     <div class="services__item__overlay"></div>
                     <img src="multimedia/a distancia.png" class="services__item__img"  alt="" srcset="">
                     <p class="services__item__text  show-on-hover">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Beatae, ipsa quae natus ad velit dolores.</p>
-                    <button class="services__item__btn  show-on-hover">Saber mas</button>
+                    <a href="./servicio.html">
+                        <button class="services__item__btn  show-on-hover" >Saber mas</button>
+                    </a>
                 </div>
             </div>
         </div>
        </section>
        <section class="contact">
+            
             <div class="contact__container">
                 <h3 class="contact__title">Contacto</h3>
-                <p class="contact__subtitle">Escribe tu mensaje</p>
-                <form action="" method="get">
-                    
+                <form action="" method="get" class="contact-form">
+                    <div class="contact-form__group">
+                        <label for="nombre"class="contact-form__label">Nombre</label><br>
+                        <input type="text" id="nombre" class="contact-form__input">
+                    </div>
+                    <div class="contact-form__group">
+                        <label for="apellido" class="contact-form__label">Apellido</label><br>
+                        <input type="text" id="apellido" class="contact-form__input">
+                    </div>
+                    <div class="contact-form__group">
+                        <label for="email" class="contact-form__label" >Email</label><br>
+                        <input type="email" id="email" class="contact-form__input">
+                    </div>
+                    <div class="contact-form__group">
+                        <label for="asunto" class="contact-form__label">Tipo de plan que desea adquirir</label>
+                        <select name="asunto" id="asunto" class="contact-form__select">
+                            <option value="Presencial">Presencial</option>
+                            <option value="Grupal">Grupal</option>
+                            <option value="Distancia">A distancia</option>
+                        </select>
+                    </div>
+                     <div class="contact-form__group">
+                        <label for="message" class="contact-form__label">Mensaje</label><br>
+                        <textarea id="message" class="contact-form__text-area"></textarea>
+                    </div>
+
+                    <button type="submit" class="contact-form__btn">Enviar</button>
                 </form>
             </div>
        </section>

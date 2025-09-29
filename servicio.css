@@ -1,0 +1,25 @@
+/* tipografia */
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
+
+/* variables */
+
+:root{
+    --color-principal: rgb(4, 130, 163);
+    --color-secundario:4, 25, 32;
+    --color-background-navbar: rgb(255, 255, 255);
+    --background-tarjetas:rgba(4,130,163,0.7);
+    
+    --fuente-principal: Oswald,sans-serif;
+    --overlay:rgba(0,0,0,0.3) ;
+    --vh: 1vh; 
+}
+
+body{
+    background-color: antiquewhite;
+    font-family: var(--fuente-principal);
+}
+
+.service__container{
+    display: flex;
+    
+}

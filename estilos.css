@@ -26,6 +26,8 @@ a{
     --color-principal: rgb(4, 130, 163);
     --color-secundario:4, 25, 32;
     --color-background-navbar: rgb(255, 255, 255);
+    --background-tarjetas:rgba(4,130,163,0.7);
+    
     --fuente-principal: Oswald,sans-serif;
     --overlay:rgba(0,0,0,0.3) ;
     --vh: 1vh; 
@@ -45,7 +47,7 @@ a{
 }
 
 
-/* Barra de naveagacion - computadora 1080p */
+/* -------Barra de naveagacion - computadora 1080p------------- */
 
 .navbar{   
     box-sizing: border-box;
@@ -120,7 +122,7 @@ a{
     transform: scale(1.05);
 }
 
-/* Menu hamburguesa - computadora 1080 p*/
+/*------------- Menu hamburguesa - computadora 1080 p-----------*/
 
 .hamburger {
     display: none;
@@ -137,7 +139,7 @@ a{
   background-color: var(--color-principal);
 }
 
-/* Contenido principal - computadora  */
+/*---------- Contenido principal/hero - computadora -------------- */
 
 
 .hero{
@@ -197,7 +199,7 @@ a{
     height: 100px;
 
 }
- /* Sobre mi - computadora 1080 p*/
+ /* --------------Sobre mi - computadora 1080 p----------------*/
 
     .about-me{
         position: relative;
@@ -245,6 +247,7 @@ a{
         align-items: center;
         justify-content: space-evenly;
         box-sizing: border-box;
+        overflow: hidden;
         width: 100%;
         height: 75vh;
         padding: 10px;
@@ -288,11 +291,12 @@ a{
     .about-me__text{
         font-size: 1.5rem;
         width: 60%;
+        overflow-y: scroll;
         text-align: justify;
         text-shadow: 0 4px 8px rgba(0,0,0,0.2);
     }
 
-/* Servicios / computadora*/
+/* ----------------Servicios - computadora 1080p--------------*/
 
  .services{
     position: relative;
@@ -354,7 +358,7 @@ a{
     border-radius: 15px;
     transform: scale(1.2);
     transition: all 0.3s ease-in;
-    background-color:  rgba(4, 130, 163, 0.7);
+    background-color:  var(--background-tarjetas);
 }
 
 
@@ -417,6 +421,61 @@ a{
 }
 
 
+/* ----------Formulario de contacto - computadora 1080p -------------- */
+
+.contact{
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    height: 100vh;
+    background-color: var(--background-tarjetas);
+}
+
+.contact__container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    border: 1px solid black;
+    padding: 25px;
+    margin-right: 50px;
+    width: 30%;
+    height: 70%;
+    border-radius: 20px;
+    box-shadow: 1px 5px 10px  black;
+}
+
+.contact__form{
+    min-width: 100%;
+    max-height: 100%;
+}
+.contact__title{
+    text-align: center;
+    font-size: 2rem;
+}
+
+.contact-form__input{
+    width: 100%;
+}
+
+.contact-form__select{
+    width: 100%;
+}
+
+.contact-form__text-area{
+    width: 100%;
+    height: 120px;
+    resize: none;
+}
+
+/* --------servicio -computadora 1080p------------- */
+
+.service__container{
+    /* display: flex; */
+    flex-direction: row;
+}
+
 
 @media (max-width:1320px){
     /* navbar */
@@ -472,16 +531,13 @@ a{
         left: 50%;
     }
 
-    .about-me__title{
-        font-size: 2rem;
-    }
 
     .about-me__text{
         overflow-y: auto;
     }
 
     .about-me__carousel-slide{
-
+        overflow: hidden;
     }
 
     /* Servicios */
@@ -595,7 +651,17 @@ a{
             scroll-snap-align:start;
         }
 
-        
+        .contact{
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .contact__container{
+            margin: 0;
+            width: 90%;
+            box-sizing: border-box;
+        }
     }
 
 @media (max-width: 1100px) and (orientation: landscape)  {
