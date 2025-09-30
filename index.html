@@ -8,25 +8,25 @@
 </head>
 <body>
     <header>
-        <nav class="navbar">
+        <nav class="navbar" id="navbar">
 
-            <div class="navbar__logo"></div>
+            <div class="navbar__logo" ></div>
             
             <ul class="navbar__nav">
                 <li class="nav__item">
-                    <a href="#" class="nav__link">Inicio</a>
+                    <a href="index.html#navbar" class="nav__link">Inicio</a>
                 </li>
                 <li class="nav__item">
-                    <a href="#" class="nav__link">Sobre mi</a>
+                    <a href="index.html#about-me" class="nav__link">Sobre mi</a>
                 </li>
                 <li class="nav__item">
-                    <a href="#" class="nav__link"> Planes</a>
+                    <a href="index.html#services" class="nav__link"> Planes</a>
                 </li>
                 <li class="nav__item">
-                    <a href="#" class="nav__link">Testimonios</a>
+                    <a href="index.html#contact" class="nav__link">Testimonios</a>
                 </li>
                 <li class="nav__item">
-                    <a href="#" class="nav__link"> Contacto </a>
+                    <a href="index.html#contact" class="nav__link"> Contacto </a>
                 </li>        
             </ul>
             <div class="hamburger">
@@ -60,7 +60,7 @@
             </div>
        </section>
        <!-- about me  -->
-       <section class="about-me">
+       <section class="about-me" id="about-me">
             <div class="about-me__overlay"></div>
             <div class="about-me__carousel">
                 <div class="about-me__carousel-wrapper">
@@ -105,7 +105,7 @@
             
        </section>
        <!-- servicios -->
-       <section class="services">
+       <section class="services" id="services">
         <div class="services__background"></div>
         <div class="services__title">
             <h2>Planes de entrenamiento</h2>
@@ -143,7 +143,7 @@
             </div>
         </div>
        </section>
-       <section class="contact">
+       <section class="contact" id="contact">
             
             <div class="contact__container">
                 <h3 class="contact__title">Contacto</h3>
@@ -178,9 +178,52 @@
             </div>
        </section>
     </main>
-    <footer>
-
-    </footer>
+    <footer class="footer">
+        <div class="footer__container">
+            <!-- <div class="footer__logo">
+                <img src="./multimedia/Captura de pantalla 2025-08-30 115723.png" class="footer__logo" alt="">
+            </div> -->
+            <div class="footer__links">
+                <h4>Enlaces utiles</h4>
+                <a href="index.html#navbar" >Inicio</a>
+                <a href="index.html#about-me" >Sobre mi</a>
+                <a href="index.html#services" > Planes</a>
+                <a href="index.html#contact" >Testimonios</a>                
+                <a href="index.html#contact" > Contacto </a> 
+            </div>
+            <div class="footer__contact">
+                <a href="mailto:entrenadorapersonal@gmail.com?subject=Consulta&body=Hola, quiero más información." >
+                    <i class="fa-solid fa-envelope"></i>Contactame por Email
+                </a>
+                <a href="https://wa.me/541138205430" target="_blank">
+                    <i class="fa-brands fa-whatsapp"></i>Contactame por Whatsapp
+                </a> 
+            </div>
+            <div class="footer__social">
+                <a href="https://www.instagram.com/" target="_blank">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+                <a href="https://www.facebook.com/" target="_blank">
+                    <i class="fa-brands fa-facebook"></i>
+                </a>
+                <a href="https://www.linkedin.com/" target="_blank">
+                    <i class="fa-brands fa-linkedin"></i>
+                </a>
+                <a href="https://www.youtube.com/" target="_blank">
+                    <i class="fa-brands fa-youtube"></i>
+                </a>
+                <a href="https://www.tiktok.com/" target="_blank">
+                    <i class="fa-brands fa-tiktok"></i>
+                </a>
+            </div>
+                
+        </div>   
+        
+        <div class="footer__copyright">
+                    <p>© 2025 EntrenadoraPersonal – Todos los derechos reservados.</p>
+        </div>     
+     </footer>
 </body>
 <script src="script.js"></script>
+<script src="https://kit.fontawesome.com/b16d2083bb.js" crossorigin="anonymous"></script>
 </html>

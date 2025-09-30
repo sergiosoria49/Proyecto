@@ -8,18 +8,62 @@
     --color-secundario:4, 25, 32;
     --color-background-navbar: rgb(255, 255, 255);
     --background-tarjetas:rgba(4,130,163,0.7);
-    
+    --background-footer: #cfcfcf ;
     --fuente-principal: Oswald,sans-serif;
     --overlay:rgba(0,0,0,0.3) ;
     --vh: 1vh; 
 }
 
 body{
-    background-color: antiquewhite;
+    background-color: var(--color-background-navbar);
     font-family: var(--fuente-principal);
 }
 
 .service__container{
     display: flex;
+    justify-content: space-evenly ;
+    align-items: center;
+    width: 90% ;
+    height: 600px ;
+    margin: auto auto;
+}
+.service__content{
     
+    width: 40%;
+}
+
+
+/* ----------- footer - computadora 1080p ---------- */
+
+.footer{
+    background-color: var(--background-footer) ;
+}
+
+.footer__container, .footer__copyright{
+    
+    display: flex;
+    justify-content: space-evenly;
+    margin: 0 auto;
+    width: 75vw;
+}
+
+.footer__logo{
+    width: 75px;
+    border-radius: 50%;
+}
+
+.footer__links, .footer__contact{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.footer__social{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.footer__social > a{
+    font-size: 1.2rem;
 }

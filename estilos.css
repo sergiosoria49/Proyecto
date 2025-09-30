@@ -8,6 +8,9 @@
     font-family: var(--fuente-principal);
 }
 
+html {
+  scroll-behavior: smooth;
+}
 
 
 li{
@@ -237,7 +240,7 @@ a{
     
     .about-me__carousel-wrapper{
         display: flex;
-        height: 75vh;
+        height: 80vh;
         transition: transform 0.5s ease;
     }
     
@@ -277,7 +280,7 @@ a{
         
     }
     .about-me__img{
-        width: 60%;
+        width: 50%;
         border-radius: 15px;
         box-shadow: 0 4px 8px rgba(0,0,0,0.2);
     }
@@ -290,7 +293,7 @@ a{
 
     .about-me__text{
         font-size: 1.5rem;
-        width: 60%;
+        width: 80%;
         overflow-y: scroll;
         text-align: justify;
         text-shadow: 0 4px 8px rgba(0,0,0,0.2);
@@ -476,6 +479,41 @@ a{
     flex-direction: row;
 }
 
+
+/* ----------- footer - computadora 1080p ---------- */
+
+.footer{
+    
+    background-color: var(--background-footer) ;
+}
+
+.footer__container, .footer__copyright{
+    display: flex;
+    justify-content: space-evenly;
+    margin: 20px auto;
+    width: 75vw;
+}
+
+.footer__logo{
+    width: 75px;
+    border-radius: 50%;
+}
+
+.footer__links, .footer__contact{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.footer__social{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.footer__social > a{
+    font-size: 1.2rem;
+}
 
 @media (max-width:1320px){
     /* navbar */
