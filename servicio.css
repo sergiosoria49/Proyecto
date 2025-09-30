@@ -23,47 +23,56 @@ body{
     display: flex;
     justify-content: space-evenly ;
     align-items: center;
-    width: 90% ;
-    height: 600px ;
+    padding: 100px;
+    margin: 0 auto;
+    width: 80% ;
+    height: auto ;
     margin: auto auto;
 }
 .service__content{
-    
+    font-size: 1.5rem;   
     width: 40%;
 }
 
-
-/* ----------- footer - computadora 1080p ---------- */
-
-.footer{
-    background-color: var(--background-footer) ;
+.service__img{
+    width: 30%;
 }
 
-.footer__container, .footer__copyright{
-    
-    display: flex;
-    justify-content: space-evenly;
-    margin: 0 auto;
-    width: 75vw;
+.service__btn-accion {
+  /* display: inline-block; */
+  margin: 10px;
+  padding: 12px 25px;
+  background-color: var(--color-principal); 
+  color: #fff;
+  text-decoration: none;
+  border-radius: 8px; 
+  font-weight: bold;
+  transition: background-color 0.3s, transform 0.2s;
 }
 
-.footer__logo{
-    width: 75px;
-    border-radius: 50%;
+.service__btn-accion:hover {
+  background-color: #036b88; 
+  transform: scale(1.05); 
 }
 
-.footer__links, .footer__contact{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-}
 
-.footer__social{
-    display: flex;
-    align-items: center;
-    gap: 5px;
-}
 
-.footer__social > a{
-    font-size: 1.2rem;
+/*------------- media queri para tablet y telefono-------------- */
+
+
+@media (max-width:1320px){
+    .service__container{
+        padding: 40px;
+        flex-direction: column;
+        overflow: hidden;
+    }
+
+    .service__img{
+        width: 100%;
+        height: auto;
+    }
+    .service__content{
+        width: 100%;
+    }
+
 }
