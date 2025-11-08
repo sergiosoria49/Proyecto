@@ -45,3 +45,5 @@ function updateSlide() {
   });
 
   window.addEventListener('resize', updateSlide);
+
+  setInterval(updateSlide, 1000);
