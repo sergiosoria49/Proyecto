@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planes</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+        <header>
+        <nav class="navbar" id="navbar">
+
+            <div class="navbar__logo" ></div>
+            
+            <ul class="navbar__nav">
+                <li class="nav__item">
+                    <a href="index.html#navbar" class="nav__link">Inicio</a>
+                </li>
+                <li class="nav__item">
+                    <a href="index.html#about-me" class="nav__link">Sobre mi</a>
+                </li>
+                <li class="nav__item">
+                    <a href="index.html#services" class="nav__link"> Planes</a>
+                </li>
+                <li class="nav__item">
+                    <a href="index.html#contact" class="nav__link">Testimonios</a>
+                </li>
+                <li class="nav__item">
+                    <a href="index.html#contact" class="nav__link"> Contacto </a>
+                </li>        
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="navbar__nav__login">
+                <li class="nav__item">
+                    <a href="#" class="nav__link__signup">Registrarse</a>
+                </li>
+                <li class="nav__item">
+                    <a href="#" class="nav__link__login">Iniciar Sesion</a> 
+                </li> 
+            </ul>            
+        </nav>
+
+
+    </header>
+    <section class="workouts">
+        <aside class="workouts__filters">
+            <input type="text" class="workouts__input-serch">
+            <div class="workouts__filter-type">
+                <h3>Tipo de entrenamiento </h3>
+                <label class="workouts__label"><input class="workouts__input" type="checkbox" value="fuerza">Fuerza</label>
+                <label class="workouts__label"><input class="workouts__input" type="checkbox" value="">Definicion muscular</label>
+                <label class="workouts__label"><input class="workouts__input" type="checkbox" value="">Perdida de grasa</label>
+                
+            </div>
+            <div class="workouts__filter-level">
+                <h3>Nivel de entrenamiento </h3>
+                <label class="workouts__label"><input class="workouts__input" type="checkbox" value="a">Principiante</label>
+                <label class="workouts__label"><input class="workouts__input" type="checkbox" value="b">Intermedio</label>
+                <label class="workouts__label"><input class="workouts__input" type="checkbox" value="c">Avanzado</label>
+                
+            </div>
+            <div class="workouts__filter-mode">
+                <h3>Modo</h3>
+                <label class="workouts__label"><input class="workouts__input" type="checkbox" value="d">Presencial</label>
+                <label class="workouts__label"><input class="workouts__input" type="checkbox" value="e">Online</label>
+                
+            </div>
+            <div class="workouts__filter-popular">
+                <label class="workouts__label"><input type="checkbox" class="workouts__input" value="popular">Mas Populares</label>
+            </div>
+        </aside>
+        <div class="workouts__container">
+            
+        </div>
+    </section>
+</body>
+<script src="planes.js"></script>
+</html>

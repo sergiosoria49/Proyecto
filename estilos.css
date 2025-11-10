@@ -294,7 +294,8 @@ a{
     .about-me__text{
         font-size: 1.5rem;
         width: 80%;
-        overflow-y: scroll;
+        overflow-y: auto;
+        
         text-align: justify;
         text-shadow: 0 4px 8px rgba(0,0,0,0.2);
     }
@@ -332,7 +333,8 @@ a{
 .services__content{
     display: flex;
     justify-content: center;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
+    width: 80%;
 }
 
 
@@ -359,7 +361,7 @@ a{
 .services__item:hover{
     border: 1px solid black;
     border-radius: 15px;
-    transform: scale(1.2);
+    transform: scale(1.1);
     transition: all 0.3s ease-in;
     background-color:  var(--background-tarjetas);
 }
@@ -423,7 +425,43 @@ a{
         
 }
 
+/* Testimonios */
 
+.reviews-slider{
+    display: flex;
+    width: 700px;
+    overflow: hidden;
+    background-color: aliceblue;
+    height: 35vh;
+    
+    box-shadow: 1px 5px 10px var(--color-secundario);
+}
+.reviews-slider__slide{
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    padding: 25px;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 1px 5px 5px;
+    flex-shrink: 0;
+    width: 33.3%;
+}
+.slide-foto{
+    font-size: 8rem;
+    text-align: center;
+    width: 200px;
+    height: 200px;
+    border-radius:50%;
+}
+
+/* testimonios en la pagina de servicio */
+.testimonios__banner{
+    display: flex;
+    justify-content: center;
+    padding: 50px;
+    box-sizing: border-box;
+}
 /* ----------Formulario de contacto - computadora 1080p -------------- */
 
 .contact{
@@ -431,7 +469,7 @@ a{
     z-index: 1;
     display: flex;
     align-items: center;
-    justify-content: end;
+    justify-content: space-evenly;
     height: 100vh;
     background-color: var(--background-tarjetas);
 }
@@ -475,7 +513,7 @@ a{
 /* --------servicio -computadora 1080p------------- */
 
 .service__container{
-    /* display: flex; */
+    display: flex;
     flex-direction: row;
 }
 
@@ -489,6 +527,7 @@ a{
 
 .footer__container, .footer__copyright{
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-evenly;
     margin: 0 auto;
     padding: 10px;
@@ -626,12 +665,16 @@ a{
     }
 
 
+    .reviews-slider{
+        width: 50%;
+        
+    }
     }
 
      
   
  /* media para tablets pequeñas y celulares */
-    @media (max-width:800px){
+    @media (max-width:850px){
         .navbar{
             width: 100%;
             border-radius: 0px;
