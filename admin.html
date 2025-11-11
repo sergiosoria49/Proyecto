@@ -6,7 +6,27 @@
     <title>Document</title>
 </head>
 <body>
-    <h2 class="titulo-admin">crea modifica y elimina registros</h2>
+    <form id="form">
+        <label>
+            Nombre<input type="text" id="Name">
+        </label>
+        <label>
+            Tipo de entrenamiento<input type="text" id="tipo_entrenamiento">
+        </label>
+        <label>
+            Descripcion<input type="text" id="descripcion">
+        </label>
+        <button type="submit">Crear producto</button>
+    </form>
+    <div class="workouts__list"></div>
+    <form id="editForm" >
+            <h3>Editar registro</h3>
+            <input type="text" id="editName" placeholder="Nombre" />
+            <input type="text" id="editTipo" placeholder="Tipo de entrenamiento" />
+            <input type="text" id="editDescripcion" placeholder="Descripción" />
+            <input type="number" id="editPrecio" placeholder="Precio" />
+            <button type="submit">Guardar cambios</button>
+    </form>
     <button class="logout-admin">Volver al inicio</button>
 </body>
 <script src="js/admin.js"></script>
