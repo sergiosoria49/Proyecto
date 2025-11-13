@@ -3,31 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="css/admin.css">
+    <title>Admin</title>
 </head>
 <body>
-    <form id="form">
-        <label>
-            Nombre<input type="text" id="Name">
-        </label>
-        <label>
-            Tipo de entrenamiento<input type="text" id="tipo_entrenamiento">
-        </label>
-        <label>
-            Descripcion<input type="text" id="descripcion">
-        </label>
-        <button type="submit">Crear producto</button>
-    </form>
-    <div class="workouts__list"></div>
-    <form id="editForm" >
-            <h3>Editar registro</h3>
-            <input type="text" id="editName" placeholder="Nombre" />
-            <input type="text" id="editTipo" placeholder="Tipo de entrenamiento" />
-            <input type="text" id="editDescripcion" placeholder="Descripción" />
-            <input type="number" id="editPrecio" placeholder="Precio" />
-            <button type="submit">Guardar cambios</button>
-    </form>
-    <button class="logout-admin">Volver al inicio</button>
+    <div class="admin__container">
+        <h1 class="admin__title">Panel de asministración</h1>
+        <form class="admin__form" id="form">
+            <label>
+                Nombre<input type="text" id="Name">
+            </label>
+            <label>
+                Tipo de entrenamiento<input type="text" id="tipo_entrenamiento">
+            </label>
+            <label>
+                Descripcion<input type="text" id="descripcion">
+            </label>
+            <button type="submit">Crear producto</button>
+        </form>
+        <div class="workouts__list"></div>
+        <form id="editForm" >
+                <h3>Editar registro</h3>
+                <input type="text" id="editName" placeholder="Nombre" />
+                <input type="text" id="editTipo" placeholder="Tipo de entrenamiento" />
+                <input type="text" id="editDescripcion" placeholder="Descripción" />
+                <input type="number" id="editPrecio" placeholder="Precio" />
+                <button type="submit">Guardar cambios</button>
+        </form>
+        <button class="logout-admin">Volver al inicio</button>
+    </div>
+   
 </body>
 <script src="js/admin.js"></script>
 </html>

@@ -49,7 +49,6 @@ async function obtenerWorkouts() {
   })
 
   const data = await response.json();
-
   console.log(data.records)
   mostrarWorkouts(data.records);
 }
@@ -69,12 +68,38 @@ function mostrarWorkouts(records) {
   records.forEach((r) => {
     const divInterno = document.createElement("div");
     divInterno.classList.add("workout-item");
+    const titulo = document.createElement("p");
+    const tipo_entrenamiento = document.createElement("p")
+    const descripcion = document.createElement("p")
+    const modalidad = document.createElement("p")
+    const nivel_experiencia = document.createElement("p")
+    const popular = document.createElement("input")
+    popular.type = "checkbox";
+    popular.disabled = true;
+    const precio = document.createElement("p")
+    const imagen = document.createElement("img")
 
-    divInterno.innerHTML = `
-      <strong>${r.fields.Name}</strong> 
-      <p>${r.fields.tipo_entrenamiento}</p> 
-      <p> ${r.fields.descripcion} </p>
-    `;
+    titulo.textContent = `${r.fields.Name}`
+
+    tipo_entrenamiento.textContent = `${r.fields.tipo_entrenamiento}`
+
+    descripcion.textContent = `${r.fields.descripcion}`
+
+    modalidad.textContent = `${r.fields.modalidad}`
+
+    nivel_experiencia.textContent = `${r.fields.nivel_experiencia}`
+
+    popular.checked =!!r.fields.popular
+
+    precio.textContent = `${r.fields.precio}`
+    imagen.src = `${r.fields.imagen}`
+    imagen
+
+    
+
+    divInterno.append(titulo,tipo_entrenamiento,descripcion,modalidad,nivel_experiencia,popular,precio,imagen)
+    console.log(divInterno)
+
 
     const btn = document.createElement("button");
     btn.textContent = "Eliminar";
