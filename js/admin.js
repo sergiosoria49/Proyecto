@@ -1,7 +1,9 @@
  const apiToken = "patdKlLsJLSL3C68A.7fc777b9e464f08c6a23cdbe39614c704abc8860070ccd95e36c43f138fcfa05";
     const baseId = "appEF5AiUAgBpCEuy";
     const tableName = "Workouts";
+    const tableOptions = "Opciones"
     const airTableUrl = `https://api.airtable.com/v0/${baseId}/${tableName}`
+    const airtableOptions = `https://api.airtable.com/v0/${baseId}/${tableOptions}`
  
  /// CREAR PRODUCTO DESDE LA PAGINA WEB ENVIANDO A TRAVES DE UN FORMULARIO 
     const containerAdmin = document.querySelector(".admin__container")
@@ -20,8 +22,120 @@
 
   function cargarCrearproducto () {
       formCreate.style.display = "block"
+
+      const label_nombre = document.createElement("label")
+      const input_nombre = document.createElement("input")
+      label_nombre.textContent = "Nombre del Plan"
+      label_nombre.appendChild(input_nombre)
+
+      const div_tipo_entrenamiento = document.createElement("div")
+      const label_tipo_entrenamiento = document.createElement("label")
+      label_tipo_entrenamiento.textContent = "Tipo de entreno"
+      const select_tipo_entrenamiento = document.createElement("select")
+      select_tipo_entrenamiento.setAttribute("id","tipo_entrenamiento")
+      div_tipo_entrenamiento.appendChild(label_tipo_entrenamiento)
+      div_tipo_entrenamiento.appendChild(select_tipo_entrenamiento)
       
+      const label_descripcion = document.createElement("label")
+      const input_descripcion = document.createElement("input")
+      label_descripcion.textContent = "Descripcion"
+      label_descripcion.appendChild(input_descripcion)
+
+      const div_modalidad = document.createElement("div")
+      const label_modalidad = document.createElement("label")
+      label_modalidad.textContent = "Modalidad"
+      const select_modalidad = document.createElement("select")
+      select_modalidad.setAttribute("id","modalidad")
+      div_modalidad.appendChild(label_modalidad)
+      div_modalidad.appendChild(select_modalidad)
+
+       const div_experiencia = document.createElement("div")
+      const label_experiencia = document.createElement("label")
+      label_experiencia.textContent = "experiencia"
+      const select_experiencia = document.createElement("select")
+      select_experiencia.setAttribute("id","experiencia")
+      div_experiencia.appendChild(label_experiencia)
+      div_experiencia.appendChild(select_experiencia)
+
+      const label_popular = document.createElement("label")
+      const inputCheck_popular = document.createElement("input")
+      inputCheck_popular.type = "checkbox"
+      label_popular.textContent = "Popular"
+      label_popular.appendChild(inputCheck_popular)
+
+      const label_precio = document.createElement("label")
+      const input_precio = document.createElement("input")
+      label_precio.textContent = "Precio"
+      label_precio.appendChild(input_precio)
+
+      const label_img = document.createElement("label")
+      const input_imagen = document.createElement("input")
+      label_img.textContent = "imagen"
+      input_imagen.type = "file"
+      label_img.appendChild(input_imagen)
+
+      formCreate.appendChild(label_nombre)
+      formCreate.appendChild(div_tipo_entrenamiento)
+      formCreate.appendChild(label_descripcion)
+      formCreate.appendChild(div_modalidad)
+      formCreate.appendChild(div_experiencia)
+      formCreate.appendChild(label_popular)
+      formCreate.appendChild(label_precio)
+      formCreate.appendChild(label_img)
+
+      armarSelects()
   }
+
+
+  async function cargarOpciones() {
+  const response = await fetch(airtableOptions, {
+    headers: {
+      'Authorization': `Bearer ${apiToken}`,
+      'Content-type' : 'application/json'
+    }
+  });
+
+  
+
+  const data = await response.json();
+  console.log(data.records)
+
+  return data.records;
+}
+
+
+async function armarSelects() {
+  const opciones = await cargarOpciones();
+
+  const selectTipo = document.getElementById("tipo_entrenamiento");
+  const selectModalidad = document.getElementById("modalidad");
+  const selectExperiencia = document.getElementById("experiencia");
+
+  opciones.forEach(opt => {
+    if (opt.fields.campo == "tipo_entrenamiento") {
+      const option = document.createElement("option");
+      option.value = opt.fields.valor;
+      option.textContent = opt.fields.valor;
+      selectTipo.appendChild(option);
+    }
+
+    if (opt.fields.campo == "modalidad") {
+      const option = document.createElement("option");
+      option.value = opt.fields.valor;
+      option.textContent = opt.fields.valor;
+      selectModalidad.appendChild(option);
+    }
+
+    if (opt.fields.campo == "nivel_experiencia") {
+      const option = document.createElement("option");
+      option.value = opt.fields.valor;
+      option.textContent = opt.fields.valor;
+      selectExperiencia.appendChild(option);
+    }
+  });
+}
+
+
 
   async function crearProducto(nuevo){
             const response = await fetch(airTableUrl,{
