@@ -4,13 +4,26 @@
     const airTableUrl = `https://api.airtable.com/v0/${baseId}/${tableName}`
  
  /// CREAR PRODUCTO DESDE LA PAGINA WEB ENVIANDO A TRAVES DE UN FORMULARIO 
+    const containerAdmin = document.querySelector(".admin__container")
+    const formCreate = document.getElementById("form");
+    const editForm = document.querySelector("#editForm");
+    editForm.style.display = "none"
+    formCreate.style.display = "none"
 
-        const form = document.getElementById("form");
-        const div = document.querySelector(".workouts__list")
-        const editForm = document.querySelector("#editForm");
-        editForm.style.display = "none"
+  const btnCrearProducto = document.createElement("button")
+  btnCrearProducto.textContent = "Crear Producto"
+  containerAdmin.appendChild(btnCrearProducto)
 
-        async function crearProducto(nuevo){
+  btnCrearProducto.addEventListener("click", () =>{
+    cargarCrearproducto()
+  })
+
+  function cargarCrearproducto () {
+      formCreate.style.display = "block"
+      
+  }
+
+  async function crearProducto(nuevo){
             const response = await fetch(airTableUrl,{
                 method: 'POST',
                 headers : {
@@ -25,33 +38,23 @@
         
         })
         obtenerWorkouts()
-    }
+  }
 
-        form.addEventListener("submit", (e) =>{
-            e.preventDefault()
+  form.addEventListener("submit", (e) =>{
+      e.preventDefault()
 
-            const nuevo ={
-                Name:document.getElementById("Name").value,
-                tipo_entrenamiento:document.getElementById("tipo_entrenamiento").value,
-                descripcion:document.getElementById("descripcion").value
-            }
-                console.log(nuevo)
-            crearProducto(nuevo);
-        })
-// editar producto 
-
-async function obtenerWorkouts() {
-  const response = await fetch(airTableUrl,{
-    headers:{
-        'Authorization':`Bearer ${apiToken}`,
-        'Content-Type': 'application/json'
-    }
+      const nuevo ={
+          Name:document.getElementById("Name").value,
+          tipo_entrenamiento:document.getElementById("tipo_entrenamiento").value,
+          descripcion:document.getElementById("descripcion").value
+      }
+          console.log(nuevo)
+      crearProducto(nuevo);
   })
 
-  const data = await response.json();
-  console.log(data.records)
-  mostrarWorkouts(data.records);
-}
+
+
+//  eliminar registro
 async function eliminarWorkout(id){
     const response = await fetch(`${airTableUrl}/${id}`,{
         method:'delete',
@@ -62,44 +65,77 @@ async function eliminarWorkout(id){
     await obtenerWorkouts();
 }
 
+//Obtener y mostrar registros
+async function obtenerWorkouts() {
+  const response = await fetch(airTableUrl,{
+    headers:{
+        'Authorization':`Bearer ${apiToken}`,
+        'Content-Type': 'application/json'
+    }
+  })
+
+  const data = await response.json();
+  mostrarWorkouts(data.records);
+}
+
+
+
 function mostrarWorkouts(records) {
-    div.innerHTML = "";
+  const tbody = document.querySelector("tbody")
+  tbody.innerHTML = "";
+    
 
   records.forEach((r) => {
-    const divInterno = document.createElement("div");
-    divInterno.classList.add("workout-item");
-    const titulo = document.createElement("p");
-    const tipo_entrenamiento = document.createElement("p")
-    const descripcion = document.createElement("p")
-    const modalidad = document.createElement("p")
-    const nivel_experiencia = document.createElement("p")
+    const tr = document.createElement("tr")
+
+    const td_nombre = document.createElement("td")
+    td_nombre.textContent = `${r.fields.Name}`
+
+
+    
+    const td_tipo_entrenamiento = document.createElement("td")
+    td_tipo_entrenamiento.textContent = `${r.fields.tipo_entrenamiento}`
+
+
+    const td_descripcion = document.createElement("td")
+    td_descripcion.textContent = `${r.fields.descripcion}`
+
+
+    const td_modalidad = document.createElement("td")
+    td_modalidad.textContent = `${r.fields.modalidad}`
+  
+
+    const td_nivel_experiencia = document.createElement("td")
+    td_nivel_experiencia.textContent = `${r.fields.nivel_experiencia}`
+    
+
+    const td_popular = document.createElement("td")
     const popular = document.createElement("input")
     popular.type = "checkbox";
     popular.disabled = true;
-    const precio = document.createElement("p")
-    const imagen = document.createElement("img")
-
-    titulo.textContent = `${r.fields.Name}`
-
-    tipo_entrenamiento.textContent = `${r.fields.tipo_entrenamiento}`
-
-    descripcion.textContent = `${r.fields.descripcion}`
-
-    modalidad.textContent = `${r.fields.modalidad}`
-
-    nivel_experiencia.textContent = `${r.fields.nivel_experiencia}`
-
     popular.checked =!!r.fields.popular
+    td_popular.appendChild(popular)
 
-    precio.textContent = `${r.fields.precio}`
-    imagen.src = `${r.fields.imagen}`
-    imagen
-
+    const td_precio = document.createElement("td")
+    td_precio.textContent = `${r.fields.precio}`
     
+    const imagen = document.createElement("img")
+    const td_imagen = document.createElement("td")
+    imagen.src = `${r.fields.imagen}`
+    td_imagen.appendChild(imagen)
 
-    divInterno.append(titulo,tipo_entrenamiento,descripcion,modalidad,nivel_experiencia,popular,precio,imagen)
-    console.log(divInterno)
+    tr.appendChild(td_nombre)
+    tr.appendChild(td_tipo_entrenamiento)
+    tr.appendChild(td_descripcion)
+    tr.appendChild(td_modalidad)
+    tr.appendChild(td_nivel_experiencia)
+    tr.appendChild(td_popular)
+    tr.appendChild(td_precio)
+    tr.appendChild(td_imagen)
 
+    tbody.appendChild(tr);
+
+  
 
     const btn = document.createElement("button");
     btn.textContent = "Eliminar";
@@ -114,13 +150,14 @@ function mostrarWorkouts(records) {
     })
 
 
-    divInterno.appendChild(editBtn)
-    divInterno.appendChild(btn)
-
-    div.appendChild(divInterno);
+    tr.appendChild(editBtn)
+    tr.appendChild(btn)
   })}
 
-    function cargarEditForm(r) {
+
+
+
+  function cargarEditForm(r) {
     editForm.style.display = "block";
     idEditando = r.id;
 
@@ -129,6 +166,9 @@ function mostrarWorkouts(records) {
     document.getElementById("editDescripcion").value = r.fields.descripcion || "";
     document.getElementById("editPrecio").value = r.fields.precio || "";
   }
+
+
+
 
   editForm.addEventListener("submit",async (e) =>{
     e.preventDefault()
@@ -142,8 +182,11 @@ function mostrarWorkouts(records) {
     console.log(camposActualizado)
 
     await editarRegistro(idEditando, camposActualizado);
-    editForm.style.display = "none"; // ocultar form otra vez
+    editForm.style.display = "none"; 
   })
+
+
+
 
   async function editarRegistro(id,campo){
         const response = await fetch (`${airTableUrl}/${id}`,{

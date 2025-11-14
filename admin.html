@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/estilos.css">
     <link rel="stylesheet" href="css/admin.css">
     <title>Admin</title>
 </head>
@@ -10,18 +11,27 @@
     <div class="admin__container">
         <h1 class="admin__title">Panel de asministración</h1>
         <form class="admin__form" id="form">
-            <label>
-                Nombre<input type="text" id="Name">
-            </label>
-            <label>
-                Tipo de entrenamiento<input type="text" id="tipo_entrenamiento">
-            </label>
-            <label>
-                Descripcion<input type="text" id="descripcion">
-            </label>
-            <button type="submit">Crear producto</button>
+            <h3>Crear nuevo producto</h3>
+            
         </form>
-        <div class="workouts__list"></div>
+        <div class="workouts__list">
+            <table class="workouts__table">
+                <thead class="workouts__table-header">
+                     <tr>
+                        <th>Nombre</th>
+                        <th>Tipo de entrenamiento</th>
+                        <th>Descripción</th>
+                        <th>Modalidad</th>
+                        <th>Nivel de experiencia</th>
+                        <th>Popular</th>
+                        <th>Precio</th>
+                        <th>imagen</th>
+                    </tr>
+                </thead>
+                <tbody class="workouts_table-body">
+                </tbody>
+            </table>
+        </div>
         <form id="editForm" >
                 <h3>Editar registro</h3>
                 <input type="text" id="editName" placeholder="Nombre" />
