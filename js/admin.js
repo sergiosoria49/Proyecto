@@ -4,6 +4,8 @@
     const tableOptions = "Opciones"
     const airTableUrl = `https://api.airtable.com/v0/${baseId}/${tableName}`
     const airtableOptions = `https://api.airtable.com/v0/${baseId}/${tableOptions}`
+    const cloudName = "dtcxlrla4";  
+    const uploadPreset = "ml_default";  
  
     //Bandera
     let modo = "crear"
@@ -24,7 +26,7 @@
     modo = "crear"
     console.log(modo)
     mostrarForm()
-    btnCrearProducto.style.display = "none"
+    mostrarBackground()
   })
   // formulario para crear producto
  const label_nombre = document.createElement("label")
@@ -80,11 +82,17 @@
       const label_img = document.createElement("label")
       const input_imagen = document.createElement("input")
       label_img.textContent = "imagen"
-      // input_imagen.type = "file"
+      input_imagen.type = "file"
       label_img.appendChild(input_imagen)
 
-      const formCreate_submit = document.createElement("input")
-      formCreate_submit.value = "Confirmar"
+      const previewImg = document.createElement("img")
+      const btnDeleteImg = document.createElement("button")
+      previewImg.style.display = "none"
+      btnDeleteImg.style.display = "none"
+      btnDeleteImg.textContent = "Eliminar foto"
+
+      const formCreate_submit = document.createElement("button")
+      formCreate_submit.textContent = "Confirmar"
       formCreate_submit.id = "submit_crearForm"
       formCreate_submit.type = "submit"
 
@@ -103,9 +111,10 @@
       formCreate.appendChild(label_popular)
       formCreate.appendChild(label_precio)
       formCreate.appendChild(label_img)
+      formCreate.appendChild(previewImg)
+      formCreate.appendChild(btnDeleteImg)
       formCreate.appendChild(formCreate_submit)
       formCreate.appendChild(formCreate_close)
-
       armarSelects()
 
 
@@ -114,7 +123,15 @@
       formCreate.style.display = "block"
   }
 
+  const overlayForm = document.querySelector(".overlay__form")
 
+  function mostrarBackground(){
+    overlayForm.style.display = "block"
+  }
+
+  function quitarBackground(){
+    overlayForm.style.display = "none"
+  }
 
 
   // carga opciones para los select - asi se evita errores del usuario 
@@ -164,16 +181,20 @@ async function armarSelects() {
   });
 }
   // boton que cierra el form crear producto 
-  const closeBtnFormCrear = document.querySelector("#close_crearForm")
-    closeBtnFormCrear.addEventListener("click", (e) =>{
+  
+    formCreate_close.addEventListener("click", (e) =>{
       e.preventDefault()
       formCreate.style.display = "none"
-      btnCrearProducto.style.display = "block"
+      quitarBackground()
     })
 
     // boton con evento para crear producto mandando info a traves de un fetch "POST"
 
-
+    overlayForm.addEventListener("click", (e) =>{
+      if(e.target === overlayForm){
+        quitarBackground()
+      }
+    })
 
   async function crearProducto(nuevo){
             const response = await fetch(airTableUrl,{
@@ -213,11 +234,35 @@ async function armarSelects() {
         obtenerWorkouts();
   }
 
-  formCreate.addEventListener("submit", (e) =>{
+ 
+    async function subirACloudinary(file) {
+    const urlCloudinary = `https://api.cloudinary.com/v1_1/${cloudName}/image/upload`;
+
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("upload_preset", uploadPreset);
+
+    const res = await fetch(urlCloudinary, {
+        method: "POST",
+        body: formData
+    });
+
+    const data = await res.json();
+    return data.secure_url; 
+}
+
+  formCreate.addEventListener("submit", async (e) =>{
       e.preventDefault()
       const valuesTipoEntrenamiento = Array.from(select_tipo_entrenamiento.selectedOptions).map(opt => opt.value);
       const valuesExperiencia = Array.from(select_experiencia.selectedOptions).map(opt => opt.value)
-    
+
+      const file = input_imagen.files[0];
+
+        let urlImagen = "";
+      
+         urlImagen =  await subirACloudinary(file);
+            console.log("Imagen subida:", urlImagen);
+        
       const nuevo ={
           Name:input_nombre.value,
           tipo_entrenamiento:valuesTipoEntrenamiento,
@@ -226,7 +271,7 @@ async function armarSelects() {
           nivel_experiencia: valuesExperiencia,
           popular: inputCheck_popular.checked,
           precio: Number(input_precio.value),
-          imagen: input_imagen.value
+          imagen: urlImagen
       }
           console.log(nuevo)
         if(modo === "crear"){
@@ -235,8 +280,11 @@ async function armarSelects() {
           editarRegistro(idEditando,nuevo)
         }
 
-    
+        quitarBackground()
+
   })
+
+
 
 
 
@@ -333,7 +381,6 @@ function mostrarWorkouts(records) {
     editBtn.textContent = "Editar"
     editBtn.addEventListener("click", () =>{
         modo = "editar"
-        console.log(modo)
         formCreate.style.display = "block"
         mostrarEditForm(r)
     })
@@ -348,7 +395,15 @@ function mostrarWorkouts(records) {
 // basicamente es el mismo que el de crear registro
   function mostrarEditForm(r) {
     mostrarForm()
+    mostrarBackground()
     idEditando = r.id;
+    const url = r.fields.imagen;
+
+     if (url) {
+        previewImg.src = url;
+        previewImg.style.display = "block";
+        btnDeleteImg.style.display = "inline-block";
+    }
 
     input_nombre.value = r.fields.Name || "";
     const valoresTipoEntrenamiento = r.fields.tipo_entrenamiento || "";
@@ -363,8 +418,30 @@ function mostrarWorkouts(records) {
     })
     inputCheck_popular.checked = r.fields.popular
     input_precio.value = r.fields.precio || "";
+    
   }
 
+
+
+
+  btnDeleteImg.addEventListener("click",async (e) =>{
+    e.preventDefault()
+    console.log(idEditando)
+    await fetch(`${airTableUrl}/${idEditando}`, {
+        method: "PATCH",
+        headers: {
+            "Authorization": `Bearer ${apiToken}`,
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            fields: {
+                imagen: null   
+            }
+        })
+  })
+    previewImg.style.display = "none"
+    btnDeleteImg.style.display = "none"
+})
 
 
 
