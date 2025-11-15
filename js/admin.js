@@ -5,19 +5,25 @@
     const airTableUrl = `https://api.airtable.com/v0/${baseId}/${tableName}`
     const airtableOptions = `https://api.airtable.com/v0/${baseId}/${tableOptions}`
  
+    //Bandera
+    let modo = "crear"
+    let idEditando = null;
  /// CREAR PRODUCTO DESDE LA PAGINA WEB ENVIANDO A TRAVES DE UN FORMULARIO 
     const containerAdmin = document.querySelector(".admin__container")
     const formCreate = document.getElementById("form");
-    const editForm = document.querySelector("#editForm");
-    editForm.style.display = "none"
+
     formCreate.style.display = "none"
 
   const btnCrearProducto = document.createElement("button")
   btnCrearProducto.textContent = "Crear Producto"
   containerAdmin.appendChild(btnCrearProducto)
 
+ 
+
   btnCrearProducto.addEventListener("click", () =>{
-    mostrarCrearproducto()
+    modo = "crear"
+    console.log(modo)
+    mostrarForm()
     btnCrearProducto.style.display = "none"
   })
   // formulario para crear producto
@@ -78,13 +84,15 @@
       label_img.appendChild(input_imagen)
 
       const formCreate_submit = document.createElement("input")
-      formCreate_submit.value = "Crear producto"
+      formCreate_submit.value = "Confirmar"
       formCreate_submit.id = "submit_crearForm"
       formCreate_submit.type = "submit"
 
       const formCreate_close = document.createElement("button")
       formCreate_close.textContent = "Cerrar"
       formCreate_close.id = "close_crearForm"
+
+
 
 
       formCreate.appendChild(label_nombre)
@@ -101,7 +109,8 @@
       armarSelects()
 
 
-   function mostrarCrearproducto () {
+   function mostrarForm () {
+      form.reset() 
       formCreate.style.display = "block"
   }
 
@@ -156,13 +165,13 @@ async function armarSelects() {
 }
   // boton que cierra el form crear producto 
   const closeBtnFormCrear = document.querySelector("#close_crearForm")
-    closeBtnFormCrear.addEventListener("click", () =>{
+    closeBtnFormCrear.addEventListener("click", (e) =>{
+      e.preventDefault()
       formCreate.style.display = "none"
       btnCrearProducto.style.display = "block"
     })
 
     // boton con evento para crear producto mandando info a traves de un fetch "POST"
-    const submitBtnFormCrear = document.querySelector("#submit_crearForm")
 
 
 
@@ -187,13 +196,28 @@ async function armarSelects() {
         obtenerWorkouts()
   }
 
+    async function editarRegistro(id,campo){
+        const response = await fetch (`${airTableUrl}/${id}`,{
+            method:'PATCH',
+            headers:{
+                'Authorization': `Bearer ${apiToken}`,
+                'Content-Type' : 'application/json'
+            },
+            body: JSON.stringify({
+                fields: campo
+            })
+        })
+        const dataActualizada = await response.json()
+
+        console.log("Cambio realizado con exito", dataActualizada)
+        obtenerWorkouts();
+  }
+
   formCreate.addEventListener("submit", (e) =>{
       e.preventDefault()
       const valuesTipoEntrenamiento = Array.from(select_tipo_entrenamiento.selectedOptions).map(opt => opt.value);
       const valuesExperiencia = Array.from(select_experiencia.selectedOptions).map(opt => opt.value)
-    console.log("Tipos seleccionados:", valuesTipoEntrenamiento);
-    console.log(inputCheck_popular.checked)
-    console.log(input_imagen.value)
+    
       const nuevo ={
           Name:input_nombre.value,
           tipo_entrenamiento:valuesTipoEntrenamiento,
@@ -205,7 +229,13 @@ async function armarSelects() {
           imagen: input_imagen.value
       }
           console.log(nuevo)
-      crearProducto(nuevo);
+        if(modo === "crear"){
+          crearProducto(nuevo);
+        }else if (modo ==="editar"){
+          editarRegistro(idEditando,nuevo)
+        }
+
+    
   })
 
 
@@ -302,7 +332,10 @@ function mostrarWorkouts(records) {
     const editBtn = document.createElement("button");
     editBtn.textContent = "Editar"
     editBtn.addEventListener("click", () =>{
-        cargarEditForm(r)
+        modo = "editar"
+        console.log(modo)
+        formCreate.style.display = "block"
+        mostrarEditForm(r)
     })
 
 
@@ -312,54 +345,48 @@ function mostrarWorkouts(records) {
 
 
 
-
-  function cargarEditForm(r) {
-    editForm.style.display = "block";
+// basicamente es el mismo que el de crear registro
+  function mostrarEditForm(r) {
+    mostrarForm()
     idEditando = r.id;
 
-    document.getElementById("editName").value = r.fields.Name || "";
-    document.getElementById("editTipo").value = r.fields.tipo_entrenamiento || "";
-    document.getElementById("editDescripcion").value = r.fields.descripcion || "";
-    document.getElementById("editPrecio").value = r.fields.precio || "";
+    input_nombre.value = r.fields.Name || "";
+    const valoresTipoEntrenamiento = r.fields.tipo_entrenamiento || "";
+    Array.from(select_tipo_entrenamiento.options).forEach(opt => {
+        opt.selected = valoresTipoEntrenamiento.includes(opt.value)
+    });
+    input_descripcion.value = r.fields.descripcion || "";
+    select_modalidad.value = r.fields.modalidad || "";
+    const valoresExperiencia = r.fields.nivel_experiencia
+    Array.from(select_experiencia.options).forEach(opt =>{
+        opt.selected = valoresExperiencia.includes(opt.value)
+    })
+    inputCheck_popular.checked = r.fields.popular
+    input_precio.value = r.fields.precio || "";
   }
 
 
 
 
-  editForm.addEventListener("submit",async (e) =>{
-    e.preventDefault()
+  // editForm.addEventListener("submit",async (e) =>{
+  //   e.preventDefault()
 
-    const camposActualizado = {
-        Name: document.getElementById("editName").value,
-        tipo_entrenamiento: document.getElementById("editTipo").value,
-        descripcion: document.getElementById("editDescripcion").value,
-        precio: Number(document.getElementById("editPrecio").value)
-    }
-    console.log(camposActualizado)
+  //   const camposActualizado = {
+  //       Name: document.getElementById("editName").value,
+  //       tipo_entrenamiento: document.getElementById("editTipo").value,
+  //       descripcion: document.getElementById("editDescripcion").value,
+  //       precio: Number(document.getElementById("editPrecio").value)
+  //   }
+  //   console.log(camposActualizado)
 
-    await editarRegistro(idEditando, camposActualizado);
-    editForm.style.display = "none"; 
-  })
-
-
+  //   await editarRegistro(idEditando, camposActualizado);
+  //   editForm.style.display = "none"; 
+  // })
 
 
-  async function editarRegistro(id,campo){
-        const response = await fetch (`${airTableUrl}/${id}`,{
-            method:'PATCH',
-            headers:{
-                'Authorization': `Bearer ${apiToken}`,
-                'Content-Type' : 'application/json'
-            },
-            body: JSON.stringify({
-                fields: campo
-            })
-        })
-        const dataActualizada = await response.json()
 
-        console.log("Cambio realizado con exito", dataActualizada)
-        obtenerWorkouts();
-  }
+
+
 
 
 
