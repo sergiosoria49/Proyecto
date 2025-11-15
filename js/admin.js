@@ -17,14 +17,13 @@
   containerAdmin.appendChild(btnCrearProducto)
 
   btnCrearProducto.addEventListener("click", () =>{
-    cargarCrearproducto()
+    mostrarCrearproducto()
+    btnCrearProducto.style.display = "none"
   })
-
-  function cargarCrearproducto () {
-      formCreate.style.display = "block"
-
-      const label_nombre = document.createElement("label")
+  // formulario para crear producto
+ const label_nombre = document.createElement("label")
       const input_nombre = document.createElement("input")
+      // input_nombre.id = "input_nombre"
       label_nombre.textContent = "Nombre del Plan"
       label_nombre.appendChild(input_nombre)
 
@@ -32,6 +31,8 @@
       const label_tipo_entrenamiento = document.createElement("label")
       label_tipo_entrenamiento.textContent = "Tipo de entreno"
       const select_tipo_entrenamiento = document.createElement("select")
+      select_tipo_entrenamiento.setAttribute("multiple", true)
+      select_tipo_entrenamiento.size = 1
       select_tipo_entrenamiento.setAttribute("id","tipo_entrenamiento")
       div_tipo_entrenamiento.appendChild(label_tipo_entrenamiento)
       div_tipo_entrenamiento.appendChild(select_tipo_entrenamiento)
@@ -53,6 +54,8 @@
       const label_experiencia = document.createElement("label")
       label_experiencia.textContent = "experiencia"
       const select_experiencia = document.createElement("select")
+      select_experiencia.setAttribute("multiple",true)
+      select_experiencia.size = 1
       select_experiencia.setAttribute("id","experiencia")
       div_experiencia.appendChild(label_experiencia)
       div_experiencia.appendChild(select_experiencia)
@@ -71,8 +74,18 @@
       const label_img = document.createElement("label")
       const input_imagen = document.createElement("input")
       label_img.textContent = "imagen"
-      input_imagen.type = "file"
+      // input_imagen.type = "file"
       label_img.appendChild(input_imagen)
+
+      const formCreate_submit = document.createElement("input")
+      formCreate_submit.value = "Crear producto"
+      formCreate_submit.id = "submit_crearForm"
+      formCreate_submit.type = "submit"
+
+      const formCreate_close = document.createElement("button")
+      formCreate_close.textContent = "Cerrar"
+      formCreate_close.id = "close_crearForm"
+
 
       formCreate.appendChild(label_nombre)
       formCreate.appendChild(div_tipo_entrenamiento)
@@ -82,25 +95,32 @@
       formCreate.appendChild(label_popular)
       formCreate.appendChild(label_precio)
       formCreate.appendChild(label_img)
+      formCreate.appendChild(formCreate_submit)
+      formCreate.appendChild(formCreate_close)
 
       armarSelects()
+
+
+   function mostrarCrearproducto () {
+      formCreate.style.display = "block"
   }
 
 
+
+
+  // carga opciones para los select - asi se evita errores del usuario 
   async function cargarOpciones() {
-  const response = await fetch(airtableOptions, {
-    headers: {
-      'Authorization': `Bearer ${apiToken}`,
-      'Content-type' : 'application/json'
-    }
-  });
+    const response = await fetch(airtableOptions, {
+      headers: {
+        'Authorization': `Bearer ${apiToken}`,
+        'Content-type' : 'application/json'
+      }
+    });
 
-  
+    const data = await response.json();
+    console.log(data.records)
 
-  const data = await response.json();
-  console.log(data.records)
-
-  return data.records;
+    return data.records;
 }
 
 
@@ -134,6 +154,15 @@ async function armarSelects() {
     }
   });
 }
+  // boton que cierra el form crear producto 
+  const closeBtnFormCrear = document.querySelector("#close_crearForm")
+    closeBtnFormCrear.addEventListener("click", () =>{
+      formCreate.style.display = "none"
+      btnCrearProducto.style.display = "block"
+    })
+
+    // boton con evento para crear producto mandando info a traves de un fetch "POST"
+    const submitBtnFormCrear = document.querySelector("#submit_crearForm")
 
 
 
@@ -148,19 +177,32 @@ async function armarSelects() {
                 fields: nuevo
                 
             })
+
+           
             
         
         })
+         const data = await response.json();
+          console.log("data",data)
         obtenerWorkouts()
   }
 
-  form.addEventListener("submit", (e) =>{
+  formCreate.addEventListener("submit", (e) =>{
       e.preventDefault()
-
+      const valuesTipoEntrenamiento = Array.from(select_tipo_entrenamiento.selectedOptions).map(opt => opt.value);
+      const valuesExperiencia = Array.from(select_experiencia.selectedOptions).map(opt => opt.value)
+    console.log("Tipos seleccionados:", valuesTipoEntrenamiento);
+    console.log(inputCheck_popular.checked)
+    console.log(input_imagen.value)
       const nuevo ={
-          Name:document.getElementById("Name").value,
-          tipo_entrenamiento:document.getElementById("tipo_entrenamiento").value,
-          descripcion:document.getElementById("descripcion").value
+          Name:input_nombre.value,
+          tipo_entrenamiento:valuesTipoEntrenamiento,
+          descripcion:input_descripcion.value,
+          modalidad: select_modalidad.value,
+          nivel_experiencia: valuesExperiencia,
+          popular: inputCheck_popular.checked,
+          precio: Number(input_precio.value),
+          imagen: input_imagen.value
       }
           console.log(nuevo)
       crearProducto(nuevo);
