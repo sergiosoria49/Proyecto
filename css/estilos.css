@@ -333,7 +333,7 @@ a{
 .services__content{
     display: flex;
     justify-content: center;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     width: 80%;
 }
 
@@ -368,7 +368,7 @@ a{
 
 
 .services__item:hover .show-on-hover{
-    display: inline-block;
+    display: block;
 }
 
 .services__item__title{
@@ -409,11 +409,21 @@ a{
 }
 
 .services__item:hover  .services__item__btn{
+   
     position: absolute;
     bottom: 0;
     left: 0;
     margin: 15px;
 }
+
+.services__item:hover  .services__item__btn-workouts{
+   
+    position: absolute;
+    bottom: 0;
+    left: 30%;
+    margin: 15px;
+}
+
 
 .services__item:hover .services__item__overlay{
     position: absolute;

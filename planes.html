@@ -5,78 +5,80 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Planes</title>
     <link rel="stylesheet" href="css/estilos.css">
+    <link rel="stylesheet" href="css/planes.css">
 </head>
 <body>
-        <header>
-        <nav class="navbar" id="navbar">
+    <header>
+            <nav class="navbar" id="navbar">
 
-            <div class="navbar__logo" ></div>
-            
-            <ul class="navbar__nav">
-                <li class="nav__item">
-                    <a href="index.html#navbar" class="nav__link">Inicio</a>
-                </li>
-                <li class="nav__item">
-                    <a href="index.html#about-me" class="nav__link">Sobre mi</a>
-                </li>
-                <li class="nav__item">
-                    <a href="index.html#services" class="nav__link"> Planes</a>
-                </li>
-                <li class="nav__item">
-                    <a href="index.html#contact" class="nav__link">Testimonios</a>
-                </li>
-                <li class="nav__item">
-                    <a href="index.html#contact" class="nav__link"> Contacto </a>
-                </li>        
-            </ul>
-            <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            <ul class="navbar__nav__login">
-                <li class="nav__item">
-                    <a href="#" class="nav__link__signup">Registrarse</a>
-                </li>
-                <li class="nav__item">
-                    <a href="#" class="nav__link__login">Iniciar Sesion</a> 
-                </li> 
-            </ul>            
-        </nav>
+                <div class="navbar__logo" ></div>
+                
+                <ul class="navbar__nav">
+                    <li class="nav__item">
+                        <a href="index.html#navbar" class="nav__link">Inicio</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="index.html#about-me" class="nav__link">Sobre mi</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="index.html#services" class="nav__link"> Planes</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="index.html#contact" class="nav__link">Testimonios</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="index.html#contact" class="nav__link"> Contacto </a>
+                    </li>        
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <ul class="navbar__nav__login">
+                    <li class="nav__item">
+                        <a href="#" class="nav__link__signup">Registrarse</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="login.html" class="nav__link__login">Iniciar Sesion</a> 
+                    </li> 
+                </ul>            
+            </nav>
 
 
-    </header>
+        </header>
     <section class="workouts">
         <aside class="workouts__filters">
             <input type="text" class="workouts__input-serch">
             <div class="workouts__filter-type">
                 <h3>Tipo de entrenamiento </h3>
                 <label class="workouts__label"><input class="workouts__input" type="checkbox" value="fuerza">Fuerza</label>
-                <label class="workouts__label"><input class="workouts__input" type="checkbox" value="">Definicion muscular</label>
-                <label class="workouts__label"><input class="workouts__input" type="checkbox" value="">Perdida de grasa</label>
+                <label class="workouts__label"><input class="workouts__input" type="checkbox" value="ganancia de masa muscular">Ganancia muscular</label>
+                <label class="workouts__label"><input class="workouts__input" type="checkbox" value="perdida de peso">Perdida de grasa</label>
                 
             </div>
             <div class="workouts__filter-level">
-                <h3>Nivel de entrenamiento </h3>
-                <label class="workouts__label"><input class="workouts__input" type="checkbox" value="a">Principiante</label>
-                <label class="workouts__label"><input class="workouts__input" type="checkbox" value="b">Intermedio</label>
-                <label class="workouts__label"><input class="workouts__input" type="checkbox" value="c">Avanzado</label>
+                <h3>Nivel de experiencia </h3>
+                <label class="workouts__label"><input class="workouts__input" type="checkbox" value="principiante">Principiante</label>
+                <label class="workouts__label"><input class="workouts__input" type="checkbox" value="intermedio">Intermedio</label>
+                <label class="workouts__label"><input class="workouts__input" type="checkbox" value="avanzado">Avanzado</label>
                 
             </div>
             <div class="workouts__filter-mode">
                 <h3>Modo</h3>
-                <label class="workouts__label"><input class="workouts__input" type="checkbox" value="d">Presencial</label>
-                <label class="workouts__label"><input class="workouts__input" type="checkbox" value="e">Online</label>
+                <label class="workouts__label"><input class="workouts__input" type="checkbox" name="modalidad" value="presencial">Presencial</label>
+                <label class="workouts__label"><input class="workouts__input" type="checkbox" name="modalidad" value="online">Online</label>
                 
             </div>
             <div class="workouts__filter-popular">
                 <label class="workouts__label"><input type="checkbox" class="workouts__input" value="popular">Mas Populares</label>
             </div>
         </aside>
-        <div class="workouts__container">
+        <div class="services__content">
             
         </div>
     </section>
 </body>
-<script src="js/planes.js"></script>
+
+<script type="module" src="js/planes.js"></script>
 </html>
