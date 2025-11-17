@@ -1,0 +1,93 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+#workoutPage {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* HERO */
+.hero-section {
+    display: flex;
+    gap: 20px;
+    flex-wrap: nowrap;
+    align-items: center;
+}
+
+.plan-img {
+    width: 350px;
+    border-radius: 8px;
+}
+
+/* INFO */
+.hero-info ul li {
+    margin-bottom: 5px;
+}
+
+.buy-btn {
+    padding: 10px 20px;
+    background: #008CBA;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+/* INCLUDES */
+.includes {
+    margin-top: 40px;
+}
+
+.includes ul li {
+    margin-bottom: 5px;
+}
+
+/* PRICE */
+.price-box {
+    background: #f1faff;
+    padding: 20px;
+    border-radius: 6px;
+    margin-top: 30px;
+}
+
+.price {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+/* Testimonios */
+.testimonios {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+    height: 300px;
+    margin-bottom: 50px ;
+}
+
+.tests-container {
+    display: flex;
+    gap: 20px;
+    flex-wrap: nowrap;
+} 
+
+.test-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    height: 100%;
+    background: #eef6ff;
+    padding: 15px;
+    border-radius: 8px;
+}
+
+.test-card img {
+    display: block;
+    width: 100px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}

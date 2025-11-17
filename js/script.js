@@ -22,25 +22,26 @@ async function obtenerServiciosPopular() {
   .map(record => ({
     Name: record.fields.Name,
     imagen: record.fields.imagen,
-    descripcion: record.fields.descripcion
+    descripcion: record.fields.descripcion,
+    id:record.id
   }));
 }
 
-async function obtenerServiciosAll() {
+// async function obtenerServiciosAll() {
   
-  const res = await fetch(airTableUrl, {
-    headers: {
-      Authorization: `Bearer ${apiToken}`
-    }
-  });
-  const data = await res.json();
-  return data.records
-  .map(record => ({
-    Name: record.fields.Name,
-    imagen: record.fields.imagen,
-    descripcion: record.fields.descripcion
-  }));
-}
+//   const res = await fetch(airTableUrl, {
+//     headers: {
+//       Authorization: `Bearer ${apiToken}`
+//     }
+//   });
+//   const data = await res.json();
+//   return data.records
+//   .map(record => ({
+//     Name: record.fields.Name,
+//     imagen: record.fields.imagen,
+//     descripcion: record.fields.descripcion
+//   }));
+// }
 
 
 
@@ -78,9 +79,8 @@ function creacionDomServicios(servicios){
     buttonWorkout.textContent = "Ver todos los planes";
 
     button.addEventListener("click", () => {
-      window.open("workoutPage.html", "_self"); 
+      window.location.href = `workoutpage.html?id=${servicio.id}`;
     });
-
      buttonWorkout.addEventListener("click", () => {
       window.open("planes.html", "_self"); 
     });

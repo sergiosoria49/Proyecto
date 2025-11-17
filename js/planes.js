@@ -86,7 +86,7 @@ async function obtenerServicios() {
     });
 
     const data = await res.json();
-
+    console.log(data)
     return data.records.map(record => ({
         Name: record.fields.Name || "",
         imagen: record.fields.imagen || "",
@@ -95,6 +95,7 @@ async function obtenerServicios() {
         popular: record.fields.popular || false,
         tipo_entrenamiento: record.fields.tipo_entrenamiento || "",
         nivel_experiencia: record.fields.nivel_experiencia || "",
+        id: record.id
     }));
 }
 
@@ -132,19 +133,12 @@ function creacionDomServicios(servicios){
     button.classList.add("services__item__btn", "show-on-hover");
     button.textContent = "Ver plan";
     
-    const buttonWorkout = document.createElement("button");
-    buttonWorkout.classList.add("services__item__btn-workouts", "show-on-hover");
-    buttonWorkout.textContent = "Ver todos los planes";
-
+ 
     button.addEventListener("click", () => {
-      window.open("workoutPage.html", "_self"); 
+      window.location.href = `workoutpage.html?id=${servicio.id}`;
     });
 
-     buttonWorkout.addEventListener("click", () => {
-      window.open("planes.html", "_self"); 
-    });
-    
-      containerImg.append(overlay, img, p, button,buttonWorkout);
+      containerImg.append(overlay, img, p, button);
     
 
     item.append(h3, containerImg);
