@@ -3,13 +3,15 @@
     const tableName = "Workouts";
     const tableOptions = "Opciones"
     const airTableUrl = `https://api.airtable.com/v0/${baseId}/${tableName}`
+ 
+
 
 
     // Obtener el ID del plan desde la URL (plan.html?id=xxxxx)
 const urlParams = new URLSearchParams(window.location.search);
 const planId = urlParams.get("id");
-console.log(urlParams)
-console.log(planId)
+
+
 // Contenedor principal donde se va a generar todo
 const container = document.getElementById("workoutPage");
 
@@ -65,6 +67,7 @@ function buildPage(plan) {
     const hero = document.createElement("section");
     hero.className = "hero-section";
 
+
     hero.innerHTML = `
         <img src="${plan.imagen}" class="plan-img">
 
@@ -102,23 +105,6 @@ function buildPage(plan) {
     `;
 
 
-    // TESTIMONIOS
-    // const testimonials = document.createElement("section");
-    // testimonials.className = "testimonials";
-
-    // testimonials.innerHTML = `
-    //     <h3>⭐ Opiniones</h3>
-    //     <div class="tests-container">
-    //         ${plan.testimonios.map(t => `
-    //             <div class="test-card">
-    //                 <img src="https://cdn-icons-png.flaticon.com/512/456/456212.png">
-    //                 <p><strong>${t.nombre}</strong></p>
-    //                 <p>${t.texto}</p>
-    //             </div>
-    //         `).join("")}
-    //     </div>
-    // `;
-
     // Insertar todo en la página
     container.appendChild(hero);
     // container.appendChild(includes);
@@ -130,15 +116,19 @@ function buildPage(plan) {
     // LÓGICA LOGIN
     document.querySelectorAll(".buy-btn").forEach(btn => {
         btn.addEventListener("click", () => {
-
-            const logged = localStorage.getItem("userLogged");
-
-            if (!logged) {
-                window.location.href = `login.html?return=${window.location.href}`;
-            } else {
-                window.location.href = "checkout.html?id=" + planId;
-            }
-
+                
+          btn.addEventListener("click", () => {
+        
+        const planParaCarrito = {
+            id: planId,
+            Name: plan.Name,
+            descripcion: plan.descripcion || "",
+            precio: plan.precio || 0,
+            imagen: plan.imagen || ""
+        };
+        console.log(planParaCarrito)
+        agregarAlCarrito(planParaCarrito);
+    });
         });
     });
 }
@@ -165,6 +155,30 @@ function buildTestimonials(records) {
 
     containerTestimonios.appendChild(testContainer);
 }
+
+
+
+
+
+
+function agregarAlCarrito(plan) {
+    console.log(plan)
+    let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+    console.log(carrito)
+  const item = carrito.find(i => i.id === plan.id);
+
+  if (item) {
+    item.cantidad++;
+} else {
+      carrito.push({ ...plan, cantidad: 1 });
+
+  }
+
+  localStorage.setItem("carrito", JSON.stringify(carrito));
+    window.location.href = "carrito.html";
+}
+
+
 
 loadTestimonials()
 loadPlan();
