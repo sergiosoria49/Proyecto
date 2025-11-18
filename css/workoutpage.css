@@ -36,17 +36,13 @@ body {
     font-size: 15px;
 }
 
-/* INCLUDES */
-.includes {
-    margin-top: 40px;
-}
 
-.includes ul li {
-    margin-bottom: 5px;
-}
 
 /* PRICE */
 .price-box {
+    width: 500px;
+    text-align: center;
+    margin: 0 auto;
     background: #f1faff;
     padding: 20px;
     border-radius: 6px;

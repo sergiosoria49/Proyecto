@@ -13,7 +13,12 @@ function cargarCarrito() {
         return;
     }
 
+    let totalPagar = 0
+
     carrito.forEach(item => {
+        const subtotal = item.cantidad * item.precio
+        totalPagar += subtotal
+
         const card = document.createElement("div");
         card.className = "carrito-item";
 
@@ -30,7 +35,9 @@ function cargarCarrito() {
         desc.textContent = item.descripcion;
 
         const precio = document.createElement("p");
-        precio.innerHTML = `<strong>$${item.precio}</strong>`;
+        precio.innerHTML = `Precio Unitario:<strong> $${item.precio}</strong>
+                            Subtotal: <strong>$${subtotal}</strong>`;
+        precio.classList.add("precio")
 
         const label = document.createElement("label");
         label.textContent = "Meses: ";
@@ -46,25 +53,35 @@ function cargarCarrito() {
         btnEliminar.className = "btn-eliminar";
         btnEliminar.onclick = () => eliminarItem(item.id);
 
+        const total = document.createElement("div")
+        total.innerHTML= `<p>Total: <span>$${totalPagar}</span> <button >Comprar</button></p>`
+
+
+
+
+
         content.appendChild(titulo);
         content.appendChild(desc);
         content.appendChild(precio);
         content.appendChild(label);
         content.appendChild(input);
+        
 
         card.appendChild(img);
         card.appendChild(content);
         card.appendChild(btnEliminar);
 
         cont.appendChild(card);
+        cont.append(total)
     });
 }
 
 function cambiarCantidad(id, nuevaCant) {
     let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
     const index = carrito.findIndex(p => p.id === id);
-    carrito[index].cantidad = parseInt(nuevaCant);
+    carrito[index].cantidad = parseInt(nuevaCant); 
     localStorage.setItem("carrito", JSON.stringify(carrito));
+    cargarCarrito()
 }
 
 function eliminarItem(id) {
@@ -73,5 +90,7 @@ function eliminarItem(id) {
     localStorage.setItem("carrito", JSON.stringify(carrito));
     cargarCarrito();
 }
+
+
 
 cargarCarrito();

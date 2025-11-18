@@ -10,14 +10,9 @@
     // Obtener el ID del plan desde la URL (plan.html?id=xxxxx)
 const urlParams = new URLSearchParams(window.location.search);
 const planId = urlParams.get("id");
-
-
-// Contenedor principal donde se va a generar todo
 const container = document.getElementById("workoutPage");
 
-console.log("URL completa:", `${airTableUrl}/${planId}`);
-console.log("planId:", planId);
-console.log("URL Params:", window.location.search);
+
 // ---------------------
 // FUNCIÓN PRINCIPAL
 // ---------------------
@@ -58,66 +53,53 @@ async function loadTestimonials() {
 }
 
 
-// ---------------------
-// CREAR TODA LA PÁGINA CON DOM
-// ---------------------
 function buildPage(plan) {
 
     // HERO SECTION
     const hero = document.createElement("section");
     hero.className = "hero-section";
 
+    const img = document.createElement("img")
+    img.classList.add("plan-img")
+    img.src = `${plan.imagen}`
 
-    hero.innerHTML = `
-        <img src="${plan.imagen}" class="plan-img">
+    const containerHero = document.createElement("div")
+    containerHero.classList.add("hero-info") 
+    
+    const tituloWorkout = document.createElement("h2")
+    tituloWorkout.textContent = `${plan.Name}`
+    const descripcionWorkout = document.createElement("p")
+    descripcionWorkout.textContent = `${plan.descripcion_larga}`
+    const btnBuy = document.createElement("button")
+    btnBuy.classList.add("buy-btn")
+    btnBuy.textContent = "Comprar plan"
 
-        <div class="hero-info">
-            <h2>${plan.Name}</h2>
-            <p>${plan.descripcion_larga}</p>
-
-            
-
-            <button class="buy-btn" id="btnComprar">Comprar plan</button>
-        </div>
-    `;
-
-
-    // QUÉ INCLUYE
-    const includes = document.createElement("section");
-    includes.className = "includes";
-
-    // includes.innerHTML = `
-    //     <h3>📦 Qué incluye</h3>
-    //     <ul>
-    //         ${plan.Incluye.split("\n").map(i => `<li>${i}</li>`).join("")}
-    //     </ul>
-    // `;
-
+    containerHero.append(tituloWorkout,descripcionWorkout,btnBuy)
+    hero.append(img,containerHero)
 
     // PRECIO
-    const price = document.createElement("section");
-    price.className = "price-box";
+    const priceSection = document.createElement("section");
+    priceSection.className = "price-box";
 
-    price.innerHTML = `
-        <h3>💰 Precio</h3>
-        <p class="price">$${plan.precio}</p>
-        <button class="buy-btn" id="btnComprar2">Comprar plan</button>
-    `;
+    const tituloPrice = document.createElement("h3")
+    tituloPrice.textContent = "Precio"
+    const valorPrecio = document.createElement("p")
+    valorPrecio.classList.add("price")
+    valorPrecio.textContent = `$${plan.precio}`
+    
+    priceSection.append(tituloPrice,valorPrecio,btnBuy)
 
-
-    // Insertar todo en la página
     container.appendChild(hero);
-    // container.appendChild(includes);
-    container.appendChild(price);
-    // container.appendChild(testimonials);
+    container.appendChild(priceSection);
+    
 
 
+    const btnBuyAll = document.querySelectorAll(".buy-btn") 
 
-    // LÓGICA LOGIN
-    document.querySelectorAll(".buy-btn").forEach(btn => {
-        btn.addEventListener("click", () => {
+    btnBuyAll.forEach(btn => {
+        
                 
-          btn.addEventListener("click", () => {
+        btn.addEventListener("click", () => {
         
         const planParaCarrito = {
             id: planId,
@@ -126,16 +108,14 @@ function buildPage(plan) {
             precio: plan.precio || 0,
             imagen: plan.imagen || ""
         };
-        console.log(planParaCarrito)
         agregarAlCarrito(planParaCarrito);
     });
         });
-    });
+    
 }
 
 function buildTestimonials(records) {
     const containerTestimonios = document.querySelector(".testimoniosContainer")
-    console.log(containerTestimonios)
     const testContainer = document.createElement("div");
     testContainer.className = "testimonios";
 
@@ -144,12 +124,17 @@ function buildTestimonials(records) {
         const card = document.createElement("div");
         card.className = "test-card";
 
-        card.innerHTML = `
-            <img src="${f.Foto || 'default.png'}" class="test-img">
-            <p class="test-name">${f.Nombre}</p>
-            <p class="test-comment">${f.Comentario}</p>
-        `;
+        const imgTestimonio = document.createElement("img")
+        imgTestimonio.src = `${f.Foto}`
+        imgTestimonio.classList.add("test-img")
+        const nombreTestimonio = document.createElement("p")
+        nombreTestimonio.textContent = `${f.Nombre}`
+        nombreTestimonio.classList.add("test-name")
+        const testimonio = document.createElement("p")
+        testimonio.classList.add("test-comment")
+        testimonio.textContent = `${f.Comentario}`
 
+        card.append(imgTestimonio,nombreTestimonio,testimonio)
         testContainer.appendChild(card);
     });
 
@@ -157,15 +142,9 @@ function buildTestimonials(records) {
 }
 
 
-
-
-
-
 function agregarAlCarrito(plan) {
-    console.log(plan)
     let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
-    console.log(carrito)
-  const item = carrito.find(i => i.id === plan.id);
+    const item = carrito.find(i => i.id === plan.id);
 
   if (item) {
     item.cantidad++;
