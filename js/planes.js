@@ -135,7 +135,7 @@ function creacionDomServicios(servicios){
     
  
     button.addEventListener("click", () => {
-      window.location.href = `workoutpage.html?id=${servicio.id}&nombre=${servicio.Name}`;
+      window.location.href = `workoutPage.html?id=${servicio.id}`;
     });
 
       containerImg.append(overlay, img, p, button);
