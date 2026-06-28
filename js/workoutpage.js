@@ -7,7 +7,7 @@
 
 
 
-    // Obtener el ID del plan desde la URL (plan.html?id=xxxxx)
+    // Obtener el ID del plan desde la URL 
 const urlParams = new URLSearchParams(window.location.search);
 const planId = urlParams.get("id");
 const container = document.getElementById("workoutPage");
@@ -17,7 +17,6 @@ const container = document.getElementById("workoutPage");
 // FUNCIÓN PRINCIPAL
 // ---------------------
 async function loadPlan() {
-    try {
         const response = await fetch(`${airTableUrl}/${planId}`,
             {
                 headers: {
@@ -27,29 +26,22 @@ async function loadPlan() {
         );
 
         const data = await response.json();
+        console.log(data)
         buildPage(data.fields);
-
-    } catch (error) {
-        console.error("Error al traer plan:", error);
-        container.innerHTML = "<p>Error al cargar el plan.</p>";
+        
     }
-}
-
-async function loadTestimonials() {
-    try {
+    
+    async function loadTestimonials() {
         const url = `https://api.airtable.com/v0/${baseId}/Testimonios`;
-
+        
         const response = await fetch(url, {
             headers: { Authorization: `Bearer ${apiToken}` }
         });
-
+        
         const data = await response.json();
-
+        
         buildTestimonials(data.records);
 
-    } catch (error) {
-        console.error("Error al traer testimonios:", error);
-    }
 }
 
 
