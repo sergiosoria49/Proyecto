@@ -1,3 +1,42 @@
-.workouts{
-    display: flex;
+/* catalogo de planes - 1080p */
+body{
+    min-width: 100vh;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
 }
+.workouts{
+    width: auto;
+    display: flex;
+    flex: 1;
+}
+.workouts__filters{
+    padding: 25px;
+}
+
+.services__content{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+
+.services__item{
+    width: 230px;
+    height: 300px;
+    margin: 20px;
+}
+
+.services__item__containerImg{
+    width: 80%;
+    margin: 0 auto;
+}
+
+.services__item__img{
+    display: block;
+    border-radius: 5px;
+}
+
+
+
+
