@@ -1,3 +1,6 @@
+:root{
+    --color-filtros:rgb(74, 168, 201);
+}
 /* catalogo de planes - 1080p */
 body{
     min-width: 100vh;
@@ -37,6 +40,59 @@ body{
     border-radius: 5px;
 }
 
+.workouts__filters{
+    width: 260px;
+    background: #fff;
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 6px 15px rgba(0,0,0,.1);
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    height: fit-content;
+}
 
+.workouts__input-serch{
+    width: 100%;
+    padding: 5px 6px;
+    border: 1px solid #d9d9d9;
+    border-radius: 8px;
+    outline: none;
+    font-size: .95rem;
+    transition: .2s;
+}
+
+
+.workouts__input-serch:focus{
+    border-color: #4aa8c9;
+    box-shadow: 0 0 0 3px rgba(74,168,201,.2);
+}
+
+.workouts__filters legend{
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    border-bottom: 2px solid var(--color-filtros);
+    padding-bottom: 3px;
+}
+
+.workouts__filters fieldset{
+     border: none;
+}
+
+.workouts__filters label{
+    display: flex;
+    gap: 8px;
+    margin-bottom: 5px;
+    cursor: pointer;
+    font-size: .95rem;
+    color: #444;
+    transition: color .2s;
+}
+
+.workouts__filters input[type="checkbox"]{
+    accent-color: var(--color-filtros);
+    width: 16px;
+    cursor: pointer;
+}
 
 
