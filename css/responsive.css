@@ -238,7 +238,7 @@
 
 /* -------------------------------------------------- */
 
-@media (max-width:450px) {
+@media (max-width:490px) {
       .workouts__filters{
         display: none;
     } 
