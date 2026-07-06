@@ -52,14 +52,15 @@ a{
 
 /* -------Barra de naveagacion - computadora 1080p------------- */
 
+
 .navbar{   
     box-sizing: border-box;
     display: flex;
     position: relative;
-    z-index: 2;
+    z-index: 100;
     background-color: var(--color-background-navbar);
     margin: 0px auto;
-    width: 1200px;
+    max-width: 1200px;
     height: 100px;
     justify-content: space-between;
 }
@@ -77,6 +78,7 @@ a{
     border-radius: 50%;
 }
 
+
 .navbar__nav, .navbar__nav__login{
     display: flex;
     justify-content: center;
@@ -91,6 +93,8 @@ a{
 }
 
 .nav__link{
+    max-width: 70px;
+    text-wrap: nowrap;
     padding: 10px;
     border-radius: 15px;
 }
@@ -333,7 +337,9 @@ a{
 
 .services__content{
     display: flex;
-    /* height: 100vh; */
+    justify-content: center;
+    width: 100%;
+    
 }
 
 
@@ -552,7 +558,7 @@ a{
     justify-content: space-evenly;
     margin: 0 auto;
     padding: 10px;
-    width: 75vw;
+    max-width: 75vw;
 }
 
 .footer__logo{
@@ -576,259 +582,8 @@ a{
     font-size: 1.2rem;
 }
 
-@media (max-width:1320px){
-    /* navbar */
-     .navbar{
-            width: 100%;
-            border-radius: 0px;
-            border: 0px;
-            box-sizing: border-box;
-            margin: 0;
-        }
-    
-    .hamburger{
-        display: flex ;
 
-    }
-
-    .navbar__nav{
-        position: absolute;
-        flex-direction: column;
-        top: 101px;
-        width: 150px;
-        transform: translateX(-100%);
-        transition: all 0.3s ease-in-out;
-        background-color: white;
-    }
-    
-     .navbar__nav__login{
-        position: absolute;
-        flex-direction: column;
-        top: 470px;
-        width: 150px;
-        transform: translateX(-100%);
-        transition: all 0.3s ease-in-out;
-        background-color: white;
-    }
-
-    .navbar__nav.active {
-        transform: translateX(0);
-    }
-
-    .navbar__nav__login.active {
-        display: flex; 
-        transform: translateX(0);
-    }
-    /* Contenido principal - 1320px  */
-
-    /* Sobre mi - 1320 px*/
-
-    .about-me__carousel{
-        width: 70vw;
-        margin: 0;
-        transform: translateX(-50%);
-        left: 50%;
-    }
-
-
-    .about-me__text{
-        overflow-y: auto;
-    }
-
-    .about-me__carousel-slide{
-        overflow: hidden;
-    }
-
-    /* Servicios */
-
-    
-    .services__title{
-        font-size: 1.5rem;
-    }
-
-       
-
-    .services__item{
-    width: 250px;
-    margin: 20px;
-    height: 400px;
-    }
-
-    .services__item:hover{
-        border: 1px solid var(--color-secundario);
-        transform: scale(1.05);
-        transition: all 0.2s ease-in;
-
-    }
-
-    .services__item__img{
-        height: 350px;
-        
-    }
-
-     .services__item__containerImg{
-        position: relative;
-        height: 350px;
-        
-    }
-        
-
-     
-    
-    .services__item:hover .services__item__overlay{
-        position: absolute;
-        top: 0;
-        background-color: #041920;
-        opacity: 0.5;
-        height: 100%;
-        width: 100%;
-        border-radius: 10px;
-    }
-
-
-    .reviews-slider{
-        width: 50%;
-        
-    }
-    }
 
      
   
- /* media para tablets pequeñas y celulares */
-    @media (max-width:850px){
-        .navbar{
-            width: 100%;
-            border-radius: 0px;
-            border: 0px;
-            box-sizing: border-box;
-        }
-
-        .hamburger span{
-            width: 30px;
-            height: 4px;
-        }
-
-        .navbar__logo{
-            width: 60px;
-            height: 60px;
-        }
-        
-        /* about me - 800px */
-        .about-me__carousel{
-            width: 90vw;
-            height: 95vh;
-        }
-
-        .about-me__carousel-slide{
-            width: 90vw;
-            height: 95vh;
-        }
-
-        .about-me__title{
-            text-align: center;
-        }
-        .about-me__img{
-            width: 90%;
-        }
-
-        .about-me__text{
-            width: 90%;
-            padding: 5px;
-        }
-
-        .carousel-btn{
-            padding: 0;
-        }
-
-        /* Servicios - 800px*/
-        .services__content{
-        /* flex-direction: column; */
-        overflow-y: auto;
-        scroll-snap-type: y mandatory; 
-        -webkit-overflow-scrolling: touch; 
-        flex-wrap: wrap;
-        }
-
-        .services__item{
-            
-            scroll-snap-align:start;
-        }
-
-        .contact{
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .contact__container{
-            margin: 0;
-            width: 90%;
-            box-sizing: border-box;
-        }
-    }
-
-@media (max-width: 1100px) and (orientation: landscape)  {
-    
-
-    /* servicios */
-
-    /* .services{
-        height: auto;
-    } */
-    .services__item{
-        position: relative;
-        height: 250px;
-        width: 140px;
-    }
-
-    .services__title{
-        font-size: 1.5rem;
-        margin: 20px;
-    }
-
-    .services__item__title{
-        font-size: 1.2rem;
-    }
-
-    .services__content{
-        height: 330px;
-    }
-
-    .services__item__text{
-        box-sizing: border-box;
-    }
-    .services__item:hover{
-        transform: scale(1.1);
-
-    }
-
-
-   .services__item__containerImg{
-        position: relative;
-        height: 200px;
-
-    }
-    
-    .services__item:hover .services__item__overlay{
-        position: absolute;
-        top: 0;
-        background-color: #041920;
-        opacity: 0.5;
-        height: 100%;
-        width: 100%;
-        
-    }
-
-    .services__item__img{
-        height: 200px;
-    }
-
-}
-
-@media(max-width:950px) and (orientation: landscape) {
-    .fixed__wpp{
-        left: 10px;
-        width: 50px;
-        height: 50px;
-    }
-}
+ 

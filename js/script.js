@@ -112,6 +112,7 @@ const navLinks = document.querySelector('.navbar__nav')
 const navLinksLogin = document.querySelector('.navbar__nav__login')
 
 hamburger.addEventListener('click', () => {
+  console.log("hola")
   navLinks.classList.toggle('active')
   navLinksLogin.classList.toggle('active')
 });

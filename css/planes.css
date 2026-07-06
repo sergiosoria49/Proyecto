@@ -2,19 +2,12 @@
     --color-filtros:rgb(74, 168, 201);
 }
 /* catalogo de planes - 1080p */
-body{
-    min-width: 100vh;
-    min-height:100vh;
-    display:flex;
-    flex-direction:column;
-}
+
 .workouts{
-    width: auto;
-    display: flex;
-    flex: 1;
-}
-.workouts__filters{
-    padding: 25px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 300px 1fr;  
+    
 }
 
 .services__content{
@@ -46,10 +39,8 @@ body{
     border-radius: 15px;
     padding: 25px;
     box-shadow: 0 6px 15px rgba(0,0,0,.1);
-    display: flex;
-    flex-direction: column;
-    gap: 25px;
     height: fit-content;
+
 }
 
 .workouts__input-serch{
