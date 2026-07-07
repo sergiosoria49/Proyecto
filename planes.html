@@ -50,9 +50,12 @@
         </header>
     <section class="workouts">
         <aside class="workouts__filters">
-            <h3>Buscar</h3>
-            <input type="text" class="workouts__input-serch">
-            <fieldset class="workouts__filter-type">
+            <div class="workouts__search">
+                <h3 class="search__title">Buscar</h3>
+                <input type="text" class="workouts__input-serch" placeholder="Buscar entrenamiento...">
+            </div>
+            <div class="workouts__filter">
+                <fieldset class="workouts__filter-type">
                 <legend>Tipo de entrenamiento </legend>
                 <label class="workouts__label"><input class="workouts__input" type="checkbox" value="fuerza">Fuerza</label>
                 <label class="workouts__label"><input class="workouts__input" type="checkbox" value="ganancia de masa muscular">Ganancia muscular</label>
@@ -76,6 +79,9 @@
                 <legend>Popular</legend>
                 <label class="workouts__label"><input type="checkbox" class="workouts__input" value="popular">Mas Populares</label>
             </fieldset>
+            </div>
+        <button class="workouts__show-filters">Mostrar Filtros</button>
+            
         </aside>
         <div class="services__content">
             

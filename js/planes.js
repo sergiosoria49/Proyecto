@@ -152,3 +152,21 @@ function creacionDomServicios(servicios){
       
 }
 })
+
+
+const btnMostrarFiltros = document.querySelector('.workouts__show-filters')
+const fieldset = document.querySelectorAll('.workouts__filter')
+
+btnMostrarFiltros.addEventListener("click",() => {
+    fieldset.forEach( f => {
+
+            f.classList.toggle("mostrar");
+        })
+    
+    if(btnMostrarFiltros.textContent == "Mostrar Filtros"){
+         btnMostrarFiltros.textContent = "Ocultar Filtros"
+    }else{
+        btnMostrarFiltros.textContent = "Mostrar Filtros"
+    }
+        
+} ) 
