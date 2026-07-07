@@ -249,15 +249,13 @@
         width: 100%;
         box-sizing: border-box;
         border: none;
-        position: fixed; 
-        top: 25%;
-        left: 0;
+        position: fixed;
         transform: translateX(-100%);
         transition: transform .35s ease;
         z-index: 10;
     }
 
-    .workouts__show-filters{
+    .workouts__show-filters, .cerrar-filtro{
         margin-top: 10px;
         background: white;
         color: #333;
@@ -267,10 +265,10 @@
         font-weight: 600;
         
     }
+
+   
     .workouts__filters .mostrar {
         transform: translateX(0);
-        display: flex;
-        flex-direction: column;
         z-index: 200;
         background-color: white;
         padding: 35px;

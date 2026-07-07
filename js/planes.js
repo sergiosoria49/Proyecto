@@ -153,9 +153,19 @@ function creacionDomServicios(servicios){
 }
 })
 
-
+// Boton Filtros mobile - Mostrar y ocultar
 const btnMostrarFiltros = document.querySelector('.workouts__show-filters')
 const fieldset = document.querySelectorAll('.workouts__filter')
+const btnOcultar = document.querySelector('.cerrar-filtro')
+
+btnOcultar.addEventListener("click",() => {
+    fieldset.forEach( f => {
+
+            f.classList.toggle("mostrar");
+        })
+    
+        
+} ) 
 
 btnMostrarFiltros.addEventListener("click",() => {
     fieldset.forEach( f => {
@@ -163,10 +173,4 @@ btnMostrarFiltros.addEventListener("click",() => {
             f.classList.toggle("mostrar");
         })
     
-    if(btnMostrarFiltros.textContent == "Mostrar Filtros"){
-         btnMostrarFiltros.textContent = "Ocultar Filtros"
-    }else{
-        btnMostrarFiltros.textContent = "Mostrar Filtros"
-    }
-        
 } ) 
