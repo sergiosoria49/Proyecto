@@ -239,6 +239,11 @@
 /* -------------------------------------------------- */
 
 @media (max-width:490px) {
+/* ------nav bar-------- */
+.navbar{
+    justify-content: start;
+}
+
 /*------ Logo----------- */
     .navbar__logo{
         width: 70px;
