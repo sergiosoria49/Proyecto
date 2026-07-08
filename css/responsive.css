@@ -241,14 +241,24 @@
 @media (max-width:490px) {
 /* ------nav bar-------- */
 .navbar{
+    position: absolute;
+    top: 0;
     justify-content: start;
 }
 
-/*------ Logo----------- */
     .navbar__logo{
         width: 70px;
         height: 70px;
     }
+
+
+/* --------Hero----- */
+.hero,
+.hero__background{
+    height: 100vh;
+}
+
+
 /* ------Filtros------------ */
     .workouts__filter{
         width: 100%;
