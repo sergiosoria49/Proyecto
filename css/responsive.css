@@ -121,17 +121,17 @@
         } */
         
         /* about me - 800px */
-        .about-me__carousel{
+        /* .about-me__carousel{
             width: 90vw;
             height: 95vh;
-        }
+        } */
 
-        .about-me__carousel-slide{
+        /* .about-me__carousel-slide{
             width: 90vw;
             height: 95vh;
-        }
+        } */
 
-        .about-me__title{
+        /* .about-me__title{
             text-align: center;
         }
         .about-me__img{
@@ -145,7 +145,7 @@
 
         .carousel-btn{
             padding: 0;
-        }
+        } */
 
         /* Servicios - 800px*/
         .services__content{
@@ -257,6 +257,56 @@
 .hero__background{
     height: 100vh;
 }
+
+.hero__img{
+    object-position:70% 50%;
+}
+
+
+/* -----------about me --------- */
+.about-me{
+    
+}
+.about-me__carousel{
+    width: 90%;
+    height: auto;
+}
+.about-me__carousel-wrapper{
+    align-items: center;
+}
+    
+    .about-me__carousel-slide{
+        /* padding: 25px; */
+        padding-inline:2rem; 
+        /* height: 100%; */
+        line-height: 1.6;
+        text-align: left;
+        height: auto;
+} 
+.about-me__title{
+    padding-top: 2rem;
+    text-wrap:nowrap;
+    font-size: clamp(1.75rem,7vw,10rem);
+}
+.about-me__img{
+
+}
+       
+.about__name{
+    font-size: clamp(1.5rem,5vw,10rem);
+}
+}
+.about__profesion{
+    font-size: clamp(1.25rem,5vw,10rem);
+    font-weight: 500;
+    text-transform: uppercase;
+    color: #43c7ff;
+}
+.about-me__description{
+    font-size: clamp(1rem,5vw,5rem);
+    font-weight: normal;
+}
+
 
 
 /* ------Filtros------------ */

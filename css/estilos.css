@@ -29,7 +29,7 @@ a{
     --color-principal: rgb(4, 130, 163);
     --color-secundario:rgb(4, 25, 32);
     --color-background-navbar: rgb(255, 255, 255);
-    --background-tarjetas:rgba(4,130,163,0.7);
+    --background-tarjetas:rgba(4,130,163,0.4);
     
     --fuente-principal: Oswald,sans-serif;
     --overlay:rgba(0,0,0,0.3) ;
@@ -246,13 +246,13 @@ a{
     .about-me__carousel{
         margin-left: 50px ;
         width: 40%;
+        height: 75vh;
         overflow: hidden;
         position: relative;
     }
     
     .about-me__carousel-wrapper{
         display: flex;
-        height: 80vh;
         transition: transform 0.5s ease;
     }
     
@@ -260,14 +260,13 @@ a{
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: space-evenly;
+        justify-content: center;
         box-sizing: border-box;
         overflow: hidden;
         width: 100%;
-        height: 75vh;
         padding: 10px;
         flex-shrink: 0;
-        background: rgba(4, 130, 163, 0.4);
+        background: var(--background-tarjetas);
         backdrop-filter: blur(10px);
         border-radius: 15px;
     }
@@ -303,14 +302,14 @@ a{
         text-shadow: 0 4px 8px rgba(0,0,0,0.2);
     }
 
-    .about-me__text{
+    /* .about-me__text{
         font-size: 1.5rem;
         width: 80%;
         overflow-y: auto;
         
         text-align: justify;
         text-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    }
+    } */
 
 /* ----------------Servicios - computadora 1080p--------------*/
 
