@@ -46,25 +46,28 @@ async function obtenerServiciosPopular() {
 
 
 function creacionDomServicios(servicios){
-  const contenedor = document.querySelector(".services__content");
+  const contenedor = document.querySelector(".services__content-home");
   servicios.forEach(servicio => {
     const item = document.createElement("div");
-    item.classList.add("services__item");
+    item.classList.add("services__item-home");
 
     const h3 = document.createElement("h3");
-    h3.classList.add("services__item__title");
+    h3.classList.add("services__item__title-home");
     h3.textContent = servicio.Name;
 
     const containerImg = document.createElement("div");
     containerImg.classList.add("services__item__containerImg");
+    containerImg.style.backgroundImage = `url(${servicio.imagen})`;
+    containerImg.style.backgroundSize = "cover";
+    containerImg.style.backgroundPosition = "center";
 
     const overlay = document.createElement("div");
     overlay.classList.add("services__item__overlay");
 
-    const img = document.createElement("img");
-    img.classList.add("services__item__img");
-    img.src = servicio.imagen;
-    img.alt = servicio.Name;
+    // const img = document.createElement("img");
+    // img.classList.add("services__item__img-home");
+    // img.src = servicio.imagen;
+    // img.alt = servicio.Name;
 
     const p = document.createElement("p");
     p.classList.add("services__item__text", "show-on-hover");
@@ -76,7 +79,7 @@ function creacionDomServicios(servicios){
     
     const buttonWorkout = document.createElement("button");
     buttonWorkout.classList.add("services__item__btn-workouts", "show-on-hover");
-    buttonWorkout.textContent = "Ver todos los planes";
+    buttonWorkout.textContent = "Todos los planes";
 
     button.addEventListener("click", () => {
       window.location.href = `workoutpage.html?id=${servicio.id}`;
@@ -85,7 +88,7 @@ function creacionDomServicios(servicios){
       window.open("planes.html", "_self"); 
     });
     
-      containerImg.append(overlay, img, p, button,buttonWorkout);
+      containerImg.append(overlay, p, button,buttonWorkout);
     
 
     item.append(h3, containerImg);

@@ -148,7 +148,7 @@
         } */
 
         /* Servicios - 800px*/
-        .services__content{
+        /* .services__content{
         flex-direction: column; 
         overflow-y: auto;
         scroll-snap-type: y mandatory; 
@@ -171,7 +171,7 @@
             margin: 0;
             width: 90%;
             box-sizing: border-box;
-        }
+        } */
     }
 
 @media (max-width: 1100px) and (orientation: landscape)  { 
@@ -240,73 +240,72 @@
 
 @media (max-width:490px) {
 /* ------nav bar-------- */
-.navbar{
-    position: absolute;
-    top: 0;
-    justify-content: start;
-}
+    .navbar{
+        position: relative;
+        top: 0;
+        justify-content: start;
+    }
 
-    .navbar__logo{
-        width: 70px;
-        height: 70px;
+        .navbar__logo{
+            width: 70px;
+            height: 70px;
+        }
+
+
+    /* --------Hero----- */
+    .hero,
+    .hero__background{
+        height: 100vh;
+    }
+
+    .hero__img{
+        object-position:70% 50%;
     }
 
 
-/* --------Hero----- */
-.hero,
-.hero__background{
-    height: 100vh;
-}
-
-.hero__img{
-    object-position:70% 50%;
-}
-
-
 /* -----------about me --------- */
-.about-me{
-    
-}
-.about-me__carousel{
-    width: 90%;
-    height: 90%;
-}
-.about-me__carousel-wrapper{
-    align-items: center;
-    height: 100%;
-}
-    
-.about-me__carousel-slide{
-    /* padding: 25px; */
-    padding-inline:2rem; 
-    /* height: 100%; */
-    line-height: 1.6;
-    text-align: left;
-    height: 100%;
-} 
-.about-me__title{ 
-    /* text-wrap:nowrap; */
-    text-align: center;
-    font-size: clamp(1.75rem,7vw,10rem);
-}
-.about-me__img{
-    width: 90%;
-}
-       
-.about__name{
-    font-size: clamp(1.5rem,5vw,10rem);
-}
-}
+    .about-me{
+        
+    }
+    .about-me__carousel{
+        width: 90%;
+        height: 90%; /* Mofidicar si no convence  */
+    }
+    .about-me__carousel-wrapper{
+        align-items: center;
+        height: 100%;
+    }
+        
+    .about-me__carousel-slide{
+        /* padding: 25px; */
+        padding-inline:2rem; 
+        /* height: 100%; */
+        line-height: 1.6;
+        text-align: left;
+        height: 100%;
+    } 
+    .about-me__title{ 
+        /* text-wrap:nowrap; */
+        text-align: center;
+        font-size: clamp(1.75rem,7vw,10rem);
+    }
+    .about-me__img{
+        width: 90%;
+    }
+        
+    .about__name{
+        font-size: clamp(1.5rem,5vw,10rem);
+    }
 .about__profesion{
-    font-size: clamp(1.25rem,5vw,10rem);
-    font-weight: 500;
-    text-transform: uppercase;
-    color: #43c7ff;
-}
-.about-me__description{
-    font-size: clamp(1rem,5vw,5rem);
-    font-weight: normal;
-}
+        font-size: clamp(1.25rem,5vw,10rem);
+        font-weight: 500;
+        text-transform: uppercase;
+        color: #43c7ff;
+    }
+    .about-me__description{
+        font-size: clamp(1rem,5vw,5rem);
+        font-weight: normal;
+    }
 
 
 
@@ -336,6 +335,7 @@
         transform: translateX(0);
         z-index: 200;
         background-color: white;
+        position: relative;
         /* padding: 35px; */
         border-radius: 15px;
     }
@@ -356,16 +356,94 @@
         flex-direction: column;
     }
 /* ------Servicios/Planes------ */
+
+.services 
+    .services__content-home{
+        /* flex-direction: column; */
+        flex-wrap: wrap;
+        width: 100%;
+    }
+
+
+     .services__item-home{
+    display: flex;
+    flex-direction: column;
+    z-index: 1;
+    color: white;
+    padding:8px;
+    margin: 10px;
+    width: 170px;
+    height: 250px;
+    background: rgba(4, 130, 163, 0.4);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    flex-shrink: 0;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+
+    transition: transform .25s;
+    } 
+
+    .services__item-home:active{
+        transform: scale(.97);
+    }
     .services__content{
         display: flex;
         flex-direction: row;
         width: 100%;
     }
 
+    .services__item__img-home{
+        width: 100%;
+        height: 100%;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+    .services__item__title-home{
+        font-size: 1rem;
+        padding-bottom:5px;
+        text-wrap: wrap;
+    }
+    .services__item__btn{
+        
+    }
+    .services__item__btn-workouts{
+        background: transparent;
+        text-wrap: nowrap;
+        color: white;
+        border: 1px solid #ffffff;
+        border-radius: 10px;
+        
+        /* transition: .3s; */
+
+    }
+
+    .services__item__containerImg{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .services__item-home:hover  .services__item__btn,
+    .services__item-home:hover  .services__item__btn-workouts{
+        margin: 5px;
+    }
+
+    .services__item-home:hover  .services__item__btn-workouts{
+
+    }
+
+    /* ------pagina de planes----- */
+
     .services__item{
     width: 250px;
     margin: 20px;
     height: 300px;
     }
-}
+
+
+
+
+
+
+    }
+    
 
